@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="HRMS v2" default="default" basedir=".">
+
+  <!-- ANT CONFIGURATION -->
+  <property name="conf.dir" value="${basedir}/ant.conf"/>
+  <property file="${conf.dir}/user.properties"/>
+  <property file="${conf.dir}/host.properties"/>
+  <property file="${conf.dir}/project.properties"/>
+
+  <!-- CLASSPATH FOR COMPILING THE WEBAPP -->
+  <!-- Add the same jar fiels to the project classpath in netbeans
+  to get rid of annoying error messages -->
+  <path id="compile.classpath">
+    <pathelement path="${classpath}"/>
+    <pathelement location="${j2ee.server.home}/lib/javaee-api-6.0-5-tomcat.jar"/>
+    <pathelement location="${j2ee.server.home}/lib/myfaces-api-2.1.10.jar"/>
+    <pathelement location="${j2ee.server.home}/lib/servlet-api.jar"/>
+  </path>
+
+  <!-- CONFIGURE THE CUSTOM ANT TASKS FOR THE MANAGER APPLICATION -->
+  <path id="deployer.classpath">
+    <fileset dir="${j2ee.server.home}/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+    <pathelement location="${j2ee.server.home}/bin/tomcat-juli.jar"/>
+  </path>
+
+  <taskdef resource="org/apache/catalina/ant/catalina.tasks"
+           classpathref="deployer.classpath"/>
+
+
+  <!-- THE DEFAULT TARGET IS EXECUTED WHEN NO OTHER TARGET IS SPECIFIED -->
+  <target name="default" depends="clean,war"
+          description="Compile the source code, and pack war file."/>
+
+
+  <!-- CLEAN -->
+  <target name="clean"
+          description="Remove all files that were created by build and deploy">
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+
+  <target name="init" depends="">
+    <mkdir dir="${build}"/>
+    <mkdir dir="${build.classes}"/>
+    <mkdir dir="${dist}"/>
+  </target>
+
+
+  <!-- COMPILING THE APPLICATION, AND CREATING THE WARFILE -->
+  <target name="compile" depends="init" description="Compile the source code">
+    <echo message="Compiling sources in ${src.java}, output to ${build.classes}"/>
+    <javac srcdir="${src.java}" destdir="${build.classes}"
+           classpathref="compile.classpath" source="1.7"
+           includeAntRuntime="false" deprecation="true" />
+  </target>
+
+  <target name="assemble" depends="init"
+          description="Assemble all necessary file in the build/web folder">
+    <copy todir="${build.web}">
+      <fileset dir="${src.web}"/>
+    </copy>
+    <copy todir="${build.classes}">
+      <fileset dir="${src.java}" includes="**/*.properties"/>
+    </copy>
+  </target>
+
+  <target name="validate" depends="compile,assemble" description="Validate web.xml">
+    <validator path="${build.web}" />
+  </target>
+
+  <target name="war" depends="clean,init,compile,assemble,validate"
+          description="Pack war file.">
+    <echo message="Packing war file"/>
+    <jar destfile="${warfile}" duplicate="preserve" basedir="${build.web}"/>
+  </target>
+
+
+  <!-- DEPLOY AND UNDEPLOY THE APPLICATION -->
+  <target name="undeploy" description="Undeploy the application">
+    <echo message="Undeploying the application from ${app.url}"/>
+    <undeploy url="${j2ee.deployer.url}" path="${contextpath}" failonerror="false"
+              username="${j2ee.server.username}" password="${j2ee.server.password}"/>
+  </target>
+
+  <target name="deploy" depends="undeploy,clean,war"
+          description="Rebuild the application and deploy it.">
+
+    <echo message="Deploying ${warfile} to context ${contextpath}"/>
+    <deploy url="${j2ee.deployer.url}" path="${contextpath}"
+            username="${j2ee.server.username}" password="${j2ee.server.password}"
+            war="${warfile}" />
+    <echo message="Application URL: ${app.url}"/>
+  </target>
+
+
+  <!-- RUN THE APPLICATION (sort of...) -->
+  <target name="run" depends="undeploy,clean,deploy" description="Undeploy and redeploy">
+    <echo message="To run the application, open ${app.url} in a browser"/>
+  </target>
+
+  <target name="startserver" description="Start the TomEE server">
+    <exec executable="cmd" >
+      <env key="CATALINA_HOME" value="${j2ee.server.home}"/>
+      <env key="CATALINA_BASE" value="${j2ee.server.base}"/>
+      <arg value="/c"/>
+      <arg value="TomEE/server.bat"/>
+      <arg value="start"/>
+    </exec>
+  </target>
+
+  <target name="stopserver" description="Stop the TomEE server">
+    <exec executable="cmd" >
+        <echo msg="j2ee.server.base = ${j2ee.server.base}" />
+      <env key="CATALINA_HOME" value="${j2ee.server.home}"/>
+      <env key="CATALINA_BASE" value="${j2ee.server.base}"/>
+      <arg value="/c"/>
+      <arg value="TomEE/server.bat"/>
+      <arg value="stop"/>
+    </exec>
+  </target>
+
+  <!-- GENERATE DOCUMENTATION -->
+
+  <target name="javadoc" description="Generate javadoc">
+    <javadoc sourcepath="${src.java}" destdir="${javadoc}"
+             private="true"
+             classpathref="compile.classpath"/>
+  </target>
+</project>
