@@ -22,7 +22,7 @@ public class DepartmentBean implements Serializable {
     private Department department;
     private boolean updating;
     @Inject private DepartmentListBean depListBean;
-    private int nummer;
+    
 
     public DepartmentBean() {
     }
