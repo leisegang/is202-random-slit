@@ -16,5 +16,6 @@ public enum View {
     employee,
     projects,
     project,
+    test,
     prjmembers;
 }
