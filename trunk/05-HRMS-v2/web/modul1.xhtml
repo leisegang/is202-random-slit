@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <!-- This is the start (home) page of the application. It just displays
+  a message. Not very exciting... improvement is possible. -->
+  <h:head>
+    <title>IGNORED</title>
+  </h:head>
+  <h:body>
+    <!-- This page uses the template layout.xthml -->
+    <ui:composition template="/templates/layout.xhtml">
+
+      <!-- This tag defines the contents of the
+      "content" part of the template -->
+      <ui:define name="content">
+          
+        <h2>Modul 1</h2>
+        <h3>Beskrivelse</h3>
+            <p>I denne modulen skal du bli introdusert til Java, som er et objektorientert programmeringsspraak.</p>
+        <h3>Godkjenningskriterier</h3>
+            <p><b>For aa faa godkjent denne modulen maa du:</b></p>
+            <ul>
+                <li>Kunne opprette klasser</li>
+                <li>Vite hva felter, konstruktorer og metoder er</li>
+                <li>Vite hva et parameter er og hvorfor vi bruker det</li>
+                <li>Kunnde kompilere prosjekter</li>
+            </ul>
+        <h3>Ressurser</h3>
+            <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Java SE downloads</a> -JDK vil veare nodvendig, det inneholder nyttige verktoy for utvikling og testing av programmer skrevet i Java programmeringsspraaket.<br></br>
+                <a href="http://www.bluej.org/" target="_blank">BlueJ</a> -BlueJ er edditoren vi vil bruke.
+            </p>
+        <form>
+            <input type="button" value="Til proven" onclick="window.location.href='http://localhost:8080/hrms2/faces/index.xhtml'" />
+        </form>
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>
