@@ -24,29 +24,25 @@
     <h:form>
         <h:panelGrid columns="0">
         <h:outputText value="Ting som du bor jobbe mer med:"/>
-         <h:inputText value="" />
+         <h:inputText value="#{melding.tekst}" />
+
         </h:panelGrid>
         
         <p>Har studenten forstatt leringsmalene?</p>
         
-    <h:selectOneRadio id="subscriptions"
-                      value="">
-        <f:selectItem id="item1" itemLabel="Godkjent" itemValue="1" />
-        <f:selectItem id="item2" itemLabel="Ikke godkjent" itemValue="2" />
+        <h:selectOneRadio value ="#{melding.txt}">
+                      
+        <f:selectItem itemLabel="Godkjent" itemValue="Godkjent" />
+        <f:selectItem itemLabel="Ikke godkjent" itemValue="Godkjent" />
 
     </h:selectOneRadio>
-        
-       <!-- <input type="radio" name="Godkjent" value="godkjent" />
-                
-        <input type="radio" name="ikkegodkjent" value="fail"/> -->
-                
-        <h:commandButton value="Lagre" action="index" />
+         <h:commandButton value="Lagre" action="skjema" />
     </h:form>
      
         
       </ui:define>
     </ui:composition>
-    <h:selectBooleanCheckbox value="Remember Me" id="chkRememberMe" />
+
   </h:body>
 </html>
 
