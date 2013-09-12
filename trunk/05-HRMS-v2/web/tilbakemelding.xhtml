@@ -17,8 +17,22 @@
       <!-- This tag defines the contents of the
       "content" part of the template -->
       <ui:define name="content">
-
-        <p>HEI</p>
+          <br></br>
+          <h3>Tilbakemeldingsskjema for forelesere og hjelpelerere</h3>
+          
+    <h:form>
+        <h:panelGrid columns="2">
+        <h:outputText value="Ting som du bor jobbe mer med:"/>
+         <h:inputText value="" />
+        </h:panelGrid>
+        
+        
+        <p>Godkjent</p> <input type="radio" name="Godkjent" value="Godkjent" />
+        <p>Ikke godkjent</p> <input type="radio" name="Ikke godkjent" value="Ikke godkjent" />
+     
+        <h:commandButton value="Lagre" action="index" />
+    </h:form>
+          
       </ui:define>
     </ui:composition>
   </h:body>
