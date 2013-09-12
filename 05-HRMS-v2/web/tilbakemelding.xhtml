@@ -3,6 +3,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
   <!-- This is the start (home) page of the application. It just displays
@@ -21,19 +22,31 @@
           <h3>Tilbakemeldingsskjema for forelesere og hjelpelerere</h3>
           
     <h:form>
-        <h:panelGrid columns="2">
+        <h:panelGrid columns="0">
         <h:outputText value="Ting som du bor jobbe mer med:"/>
          <h:inputText value="" />
         </h:panelGrid>
         
+        <p>Har studenten forstatt leringsmalene?</p>
         
-        <p>Godkjent</p> <input type="radio" name="Godkjent" value="Godkjent" />
-        <p>Ikke godkjent</p> <input type="radio" name="Ikke godkjent" value="Ikke godkjent" />
-     
+    <h:selectOneRadio id="subscriptions"
+                      value="">
+        <f:selectItem id="item1" itemLabel="Godkjent" itemValue="1" />
+        <f:selectItem id="item2" itemLabel="Ikke godkjent" itemValue="2" />
+
+    </h:selectOneRadio>
+        
+       <!-- <input type="radio" name="Godkjent" value="godkjent" />
+                
+        <input type="radio" name="ikkegodkjent" value="fail"/> -->
+                
         <h:commandButton value="Lagre" action="index" />
     </h:form>
-          
+     
+        
       </ui:define>
     </ui:composition>
+    <h:selectBooleanCheckbox value="Remember Me" id="chkRememberMe" />
   </h:body>
 </html>
+
