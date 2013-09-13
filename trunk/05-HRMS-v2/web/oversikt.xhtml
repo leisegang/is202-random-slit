@@ -1,14 +1,94 @@
-<?xml version="1.0" encoding="MacRoman"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Oversikt</title>
-    </head>
-    <body>
-        <div>Her har du oversikten over alle modulene i IS102</div>
-    </body>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <!-- This is the start (home) page of the application. It just displays
+  a message. Not very exciting... improvement is possible. -->
+  <h:head>
+    <title>IGNORED</title>
+  </h:head>
+  <h:body>
+    <!-- This page uses the template layout.xthml -->
+    <ui:composition template="/templates/layout.xhtml">
+
+      <!-- This tag defines the contents of the
+      "content" part of the template -->
+      <ui:define name="content">
+          
+        <h2>Oversikt</h2>
+        <p>Her har du oversikten over alle modulene i IS102</p>
+        
+        <style type="text/css">
+        .tg-table-blue { border-collapse: collapse; border-spacing: 0; width: 50%; }
+        .tg-table-blue td, .tg-table-blue th { background-color: #F7FDFA; border: 1px #999 solid; color: #444; font-family: sans-serif; font-size: 100%; padding: 10px; vertical-align: top; text-align: center;}
+        .tg-table-blue .tg-even td  { background-color: #D2E4FC; }
+        .tg-table-blue th  { background-color: #26ADE4; color: #FFF; font-size: 110%; font-weight: bold; }
+        .tg-table-blue tr:hover td, .tg-table-blue tr.even:hover td  { color: #333; background-color: #FFCC00; }
+        .tg-bf { font-weight: bold; } .tg-it { font-style: italic; }
+        .tg-left { text-align: left; } .tg-right { text-align: right; } .tg-center { text-align: center; }
+        </style>
+        <table class="tg-table-blue">
+          <tr>
+            <th>Modul</th>
+            <th>Gradering</th>
+            <th>Antall</th>
+          </tr>
+          <tr class="tg-even">
+            <td>Modul 1</td>
+            <td>Lett</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>Modul 2</td>
+            <td>Middels</td>
+            <td>8</td>
+          </tr>
+          <tr class="tg-even">
+            <td>Modul 3</td>
+            <td>Middels</td>
+            <td>11</td>
+          </tr>
+          <tr>
+            <td>Modul 4</td>
+            <td>Vanskelig</td>
+            <td>17</td>
+          </tr>
+          <tr class="tg-even">
+            <td>Modul 5</td>
+            <td>Lett</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>Modul 6</td>
+            <td>Vanskelig</td>
+            <td>11</td>
+          </tr>
+          <tr class="tg-even">
+            <td>Modul 7</td>
+            <td>Middels</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>Modul 8</td>
+            <td>Lett</td>
+            <td>4</td>
+          </tr>
+          <tr class="tg-even">
+            <td>Modul 9</td>
+            <td>Middels</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>Modul 10</td>
+            <td>Vanskelig</td>
+            <td>3</td>
+          </tr>
+        </table>
+          
+      </ui:define>
+    </ui:composition>
+  </h:body>
 </html>

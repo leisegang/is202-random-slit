@@ -23,20 +23,25 @@
       <h:panelGrid columns="1">
         <h:link value="#{strings.index_menuitem}" outcome="index"
                 styleClass="#{fn:startsWith(view.viewId,'/index') ? 'bold' : 'plain'}" />
+        
         <h:link value="oversikt" outcome="oversikt"
                 styleClass="#{fn:startsWith(view.viewId,'/oversikt') ? 'bold' : 'plain'}" />
+        
         <h:link value="tilbakemelding" outcome="tilbakemelding"
                 styleClass="#{fn:startsWith(view.viewId,'/tilbakemelding') ? 'bold' : 'plain'}" />
         
         <h:link value="kommentar" outcome="kommentar"
-                styleClass="#{fn:startsWith(view.viewId,'kommentar') ? 'bold' : 'plain'}" />
+                styleClass="#{fn:startsWith(view.viewId,'/kommentar') ? 'bold' : 'plain'}" />
         
         <h:link value="modul1" outcome="modul1"
                 styleClass="#{fn:startsWith(view.viewId,'/modul1') ? 'bold' : 'plain'}"/>
+        
         <h:link value="#{strings.departments_menuitem}" outcome="departments"
                 styleClass="#{fn:startsWith(view.viewId,'/department') ? 'bold' : 'plain'}" />
+        
         <h:link value="#{strings.employees_menuitem}" outcome="employees"
                 styleClass="#{fn:startsWith(view.viewId,'/employee') ? 'bold' : 'plain'}" />
+
       </h:panelGrid>
     </ui:composition>
   </body>
