@@ -35,8 +35,5 @@ public class melding {
     public void setTekst(String tekst) {
         this.tekst = tekst;
     }
-    
-    
-    
-    
+
 }
