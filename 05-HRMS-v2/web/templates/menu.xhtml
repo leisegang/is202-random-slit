@@ -23,6 +23,8 @@
       <h:panelGrid columns="1">
         <h:link value="#{strings.index_menuitem}" outcome="index"
                 styleClass="#{fn:startsWith(view.viewId,'/index') ? 'bold' : 'plain'}" />
+        <h:link value="oversikt" outcome="oversikt"
+                styleClass="#{fn:startsWith(view.viewId,'/oversikt') ? 'bold' : 'plain'}" />
         <h:link value="tilbakemelding" outcome="tilbakemelding"
                 styleClass="#{fn:startsWith(view.viewId,'/tilbakemelding') ? 'bold' : 'plain'}" />
         
