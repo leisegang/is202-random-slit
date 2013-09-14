@@ -2,13 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
   <!-- This is the start (home) page of the application. It just displays
   a message. Not very exciting... improvement is possible. -->
   <h:head>
-    <title>IGNORED</title>
+    <title>Add Modul</title>
   </h:head>
   <h:body>
     <!-- This page uses the template layout.xthml -->
@@ -20,15 +21,24 @@
         <h:form>
             <h:panelGrid columns="1">
                 <h:outputText value="Modulnavn:" />
-                <h:inputText id="modul" readonly="true" value=""/>
+                <h:inputText id="modul" value=""/>
+                
                 <h:outputText value="Beskrivelse:"/>
                 <h:inputTextarea id="beskrivelse" cols="40" rows="5" />
+                
                 <h:outputText value="Godkjenningskriterier:"/>
                 <h:inputTextarea id="kriterie" cols="40" rows="5" />
+                
                 <h:outputText value="Ressurser:"/>
                 <h:inputTextarea id="ressurs" cols="40" rows="5"/>
             </h:panelGrid>
-      <h:commandButton action="index"/>
+            
+            <h:selectOneRadio value="">
+                <f:selectItem itemLabel="Lett" itemValue="Lett" />
+                <f:selectItem itemLabel="Middels" itemValue="Middels" />
+                <f:selectItem itemLabel="Vanskelig" itemValue="Vanskelig" />
+            </h:selectOneRadio> <br />
+      <h:commandButton value="Publiser" action="beanreferanse-midlertidig"/>
     </h:form>
       </ui:define>
     </ui:composition>
