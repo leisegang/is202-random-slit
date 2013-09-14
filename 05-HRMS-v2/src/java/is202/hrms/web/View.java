@@ -17,6 +17,7 @@ public enum View {
     projects,
     project,
     tilbakemelding,
+    modul,
     modul1,
     oversikt,
     prjmembers;
