@@ -19,6 +19,12 @@ import javax.faces.bean.SessionScoped;
 public class melding {
     private String txt;
     private String tekst;
+    
+    
+    public melding ()
+    {
+        
+    }
 
     public String getTxt() {
         return txt;
