@@ -19,11 +19,11 @@
       "content" part of the template -->
       <ui:define name="content">
           <br></br>
-          <h3>Tilbakemeldingsskjema for forelesere og hjelpelerere</h3>
+          <h3>Tilbakemeldingsskjema for forelesere og hjelpelærere</h3>
           
     <h:form>
         <h:panelGrid columns="0">
-        <h:outputText value="Ting som du bor jobbe mer med:"/>
+        <h:outputText value="Ting som du bør jobbe mer med:"/>
         <h:inputTextarea cols="30" rows="10" value="#{melding.tekst}" /> 
 
         </h:panelGrid>
@@ -35,7 +35,7 @@
         <f:selectItem itemLabel="Godkjent" itemValue="Godkjent" />
         <f:selectItem itemLabel="Ikke godkjent" itemValue="Ikke godkjent" />
 
-    </h:selectOneRadio>
+        </h:selectOneRadio>
          <h:commandButton value="Lagre" action="skjema" />
     </h:form>
      

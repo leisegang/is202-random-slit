@@ -3,15 +3,21 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
   <!-- This is the start (home) page of the application. It just displays
   a message. Not very exciting... improvement is possible. -->
   <h:head>
     <title>IGNORED</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </h:head>
-    <body>
+  <h:body>
+    <!-- This page uses the template layout.xthml -->
+    <ui:composition template="/templates/layout.xhtml">
+
+      <!-- This tag defines the contents of the
+      "content" part of the template -->
+      <ui:define name="content">
         
        
         
@@ -22,5 +28,7 @@
          <h:form>  
        <h:commandButton value="Tilbake" action="index" />
          </h:form>
-    </body>
+      </ui:define>
+    </ui:composition>
+  </h:body>
 </html>
