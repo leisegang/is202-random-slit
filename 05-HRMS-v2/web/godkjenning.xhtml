@@ -23,29 +23,31 @@
         <h:form>
         <h2>Studenter som venter på godkjenning</h2>
         
-<table border="1">
-<tr>
-<th>Student</th>   
-<th>Modul</th>
-<th>Til godkjenning</th>
-</tr>
-<tr>
-<td>Jens Hansen</td>
-<td> 3</td>
-<td><a href= "tilbakemelding.xhtml" title="godkjenning"> godkjenning</a></td>
-</tr>
-<tr>
-<td>Trine Pettersen</td>
-<td>4</td>
-<td><a href= "tilbakemelding.xhtml" title="godkjenning"> godkjenning</a></td>
-</tr>
-<tr>
-<td>Ola Olsen</td>
-<td>1</td>
-<td><a href= "tilbakemelding.xhtml" title="godkjenning"> godkjenning</a></td>
-</tr>            
-</table>
-         
+
+ 
+<h:dataTable id="table1" value="" var="item"
+             border="4">
+    <h:column>
+        <f:facet name="header">
+            <h:outputText value="Navn" />
+        </f:facet>
+        <h:outputText value=" Ola  Olsen "/>
+       
+    </h:column>
+     <h:column>
+        <f:facet name="header">
+            <h:outputText value="modulnr." />
+        </f:facet>
+         <h:outputText value="4" />
+     </h:column>
+     <h:column>
+        <f:facet name="header">
+            <h:outputText value="til godkjenning" />
+        </f:facet>
+           <h:link value="tilbakemelding" outcome="tilbakemelding" />
+    </h:column>
+ 
+</h:dataTable>        
         
     </h:form>
       </ui:define>
