@@ -4,19 +4,19 @@
  */
 package is202.hrms.entity;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author kjetil
  */
 
-
-@ManagedBean(name = "melding")
+@Named("melding")
 @SessionScooped
-public class melding {
+public class melding implements Serializable {
+    
     private String txt;
     private String tekst;
     
