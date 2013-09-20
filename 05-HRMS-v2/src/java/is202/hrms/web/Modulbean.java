@@ -4,6 +4,7 @@
  */
 package is202.hrms.web;
 
+import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -13,7 +14,7 @@ import javax.inject.Named;
  */
 @Named("modulbean")
 @SessionScoped
-public class Modulbean {
+public class Modulbean implements Serializable {
     
     private String modulnavn;
     private String beskrivelse;
