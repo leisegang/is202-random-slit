@@ -14,7 +14,7 @@ import javax.inject.Named;
  */
 
 @Named("melding")
-@SessionScooped
+@SessionScoped
 public class melding implements Serializable {
     
     private String txt;
