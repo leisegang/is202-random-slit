@@ -24,14 +24,14 @@
 
                 <h:form>
                     <h:panelGrid columns="0">
-                        <h:outputText value="Ting som du bør æøå jobbe mer med:"/>
-                        <h:inputTextarea cols="30" rows="10" value="#{melding.tekst}" /> 
+                        <h:outputText value="Ting som du bør jobbe mer med:"/>
+                        <h:inputTextarea cols="50" rows="10" value="#{melding.tekst}" /> 
 
                     </h:panelGrid>
 
                     <p>Har studenten forstatt leringsmalene?</p>
 
-                    <h:selectOneRadio value ="#{melding.txt}">
+                    <h:selectOneRadio value ="#{melding.radioButton}">
 
                         <f:selectItem itemLabel="Godkjent" itemValue="Godkjent" />
                         <f:selectItem itemLabel="Ikke godkjent" itemValue="Ikke godkjent" />
