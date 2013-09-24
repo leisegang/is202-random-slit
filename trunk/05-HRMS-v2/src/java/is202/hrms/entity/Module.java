@@ -13,7 +13,16 @@ public class Module {
     private String description;
     private String criteria;
     private String resources;
+    private String difficulty;
     private int id;
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
 
     public int getId() {
         return id;
