@@ -21,24 +21,24 @@
         <h:form>
             <h:panelGrid columns="1">
                 <h:outputText value="Modulnavn:" />
-                <h:inputText id="module" value="#{modulebean.module.name}"/>
+                <h:inputText id="module" value="#{modulelistbean.module.name}"/>
                 
-                <h:outputText value="Description:"/>
-                <h:inputTextarea id="description" cols="40" rows="5" value="#{modulebean.module.description}"/>
+                <h:outputText value="Beskrivelse:"/>
+                <h:inputTextarea id="description" cols="40" rows="5" value="#{modulelistbean.module.description}"/>
                 
                 <h:outputText value="Godkjenningskriterier:"/>
-                <h:inputTextarea id="criteria" cols="40" rows="5" value="#{modulebean.module.criteria}"/>
+                <h:inputTextarea id="criteria" cols="40" rows="5" value="#{modulelistbean.module.criteria}"/>
                 
                 <h:outputText value="Ressurser:"/>
-                <h:inputTextarea id="resources" cols="40" rows="5" value="#{modulebean.module.resources}"/>
+                <h:inputTextarea id="resources" cols="40" rows="5" value="#{modulelistbean.module.resources}"/>
             </h:panelGrid>
             
-            <h:selectOneRadio value="#{modulebean.module.difficulty}">
+            <h:selectOneRadio value="#{modulelistbean.module.difficulty}">
                 <f:selectItem itemLabel="Lett" itemValue="Lett" />
                 <f:selectItem itemLabel="Middels" itemValue="Middels" />
                 <f:selectItem itemLabel="Vanskelig" itemValue="Vanskelig" />
             </h:selectOneRadio> <br />
-      <h:commandButton value="Publiser" action="#{modulebean.save()}"/>
+      <h:commandButton value="Publiser" action="#{modulelistbean.save()}"/>
     </h:form>
       </ui:define>
     </ui:composition>
