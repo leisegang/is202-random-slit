@@ -19,7 +19,7 @@
       "content" part of the template -->
       <ui:define name="content">
 
-              <h:dataTable value="#{modulebean.getModules()}" var="module">
+              <h:dataTable value="#{modulelistbean.getModules()}" var="module">
                 <h:column>
                     <f:facet name="header">Modul</f:facet>
                     #{module.name}

@@ -14,15 +14,15 @@ import javax.inject.Named;
  *
  * @author Vetle
  */
-@Named("modulebean")
+@Named("modulelistbean")
 @SessionScoped
-public class ModuleBean implements Serializable {
+public class ModuleListBean implements Serializable {
     
     ArrayList<Module> modules;
     Module module;
     
     
-    public ModuleBean() {
+    public ModuleListBean() {
         modules = new ArrayList<Module>();
         module = new Module();
     }
