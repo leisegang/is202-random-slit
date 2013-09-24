@@ -30,28 +30,28 @@
             <br/>
         <h:outputText value="For å få mulighet til å godkjenne modulen må du svare på spørsmalene under :"/>
          <br/>
-        <h:selectOneRadio value ="#{melding.txt}">
+        <h:selectOneRadio value ="#{kommentar.radioButton}">
        
         <h:outputText value="Kan du læringsmålene godt nok til at du kan snakke om de? :"/>
         <f:selectItem itemLabel="Ja" itemValue="Ja" />
         <f:selectItem itemLabel="Nei" itemValue="Nei" />
-        <f:selectItem itemLabel="Usikker" itemValue="Usikker" />
+ 
                </h:selectOneRadio>
 
    <br/>
-     <h:selectOneRadio value ="#{melding.txt}">
-        <h:outputText value="spørsmål 2 bla bla bla :"/>           
+     <h:selectOneRadio value ="#{kommentar.radioButton}">
+        <h:outputText value="Har du oppfylt alle kriteriene for denne modulen? :"/>           
        <f:selectItem itemLabel="Ja" itemValue="Ja" />
         <f:selectItem itemLabel="Nei" itemValue="Nei" />
-        <f:selectItem itemLabel="Usikker" itemValue="Usikker" />
+
                </h:selectOneRadio>
 
-  <h:selectOneRadio value ="#{melding.txt}">
+  <h:selectOneRadio value ="#{kommentar.radioButton}">
         <br/>
-        <h:outputText value="spørsmål 3 kommer her :"/>           
+        <h:outputText value="Er du klar til å snakke om denne modulen muntlig? :"/>           
        <f:selectItem itemLabel="Ja" itemValue="Ja" />
         <f:selectItem itemLabel="Nei" itemValue="Nei" />
-        <f:selectItem itemLabel="Usikker" itemValue="Usikker" />
+ 
 
    </h:selectOneRadio>
         
@@ -63,9 +63,9 @@
         
     <br/>
         <p>Hva synes du om Modulen? Hva var bra/dårlig?</p>
-        <h:inputTextarea cols="30" rows="10" value="#{melding.tekst}" /> 
+        <h:inputTextarea cols="30" rows="10" value="#{kommentar.comment}" /> 
         
-        <h:commandButton value="Godkjenn" action="skjema" />
+        <h:commandButton value="Godkjenn" action="kommentarSkjema" />
       
      
     </h:form>
