@@ -30,7 +30,7 @@
             <br/>
         <h:outputText value="For å få mulighet til å godkjenne modulen må du svare på spørsmalene under :"/>
          <br/>
-        <h:selectOneRadio value ="#{kommentar.radioButton}">
+        <h:selectOneRadio value ="#{kommentar.radioButton1}">
        
         <h:outputText value="Kan du læringsmålene godt nok til at du kan snakke om de? :"/>
         <f:selectItem itemLabel="Ja" itemValue="Ja" />
@@ -39,14 +39,14 @@
                </h:selectOneRadio>
 
    <br/>
-     <h:selectOneRadio value ="#{kommentar.radioButton}">
+     <h:selectOneRadio value ="#{kommentar.radioButton2}">
         <h:outputText value="Har du oppfylt alle kriteriene for denne modulen? :"/>           
        <f:selectItem itemLabel="Ja" itemValue="Ja" />
         <f:selectItem itemLabel="Nei" itemValue="Nei" />
 
                </h:selectOneRadio>
 
-  <h:selectOneRadio value ="#{kommentar.radioButton}">
+  <h:selectOneRadio value ="#{kommentar.radioButton3}">
         <br/>
         <h:outputText value="Er du klar til å snakke om denne modulen muntlig? :"/>           
        <f:selectItem itemLabel="Ja" itemValue="Ja" />

@@ -17,7 +17,9 @@ import javax.inject.Named;
 @SessionScoped
 public class kommentar implements Serializable {
     
-    private String radioButton;
+    private String radioButton1;
+    private String radioButton2;
+    private String radioButton3;
     private String comment;
     
     
@@ -26,14 +28,32 @@ public class kommentar implements Serializable {
         
     }
 
-    public String getradioButton() {
-        return radioButton;
+    public String getRadioButton1() {
+        return radioButton1;
     }
 
-    public void setradioButton(String radioButton) {
-        this.radioButton = radioButton;
+    public void setRadioButton1(String radioButton1) {
+        this.radioButton1 = radioButton1;
     }
 
+    public String getRadioButton2() {
+        return radioButton2;
+    }
+
+    public void setRadioButton2(String radioButton2) {
+        this.radioButton2 = radioButton2;
+    }
+
+    public String getRadioButton3() {
+        return radioButton3;
+    }
+
+    public void setRadioButton3(String radioButton3) {
+        this.radioButton3 = radioButton3;
+    }
+    
+    
+    
     public String getComment() {
         return comment;
     }
