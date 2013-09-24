@@ -16,13 +16,13 @@ import javax.inject.Named;
  */
 @Named("modulebean")
 @SessionScoped
-public class ModuleBean implements Serializable {
+public class Modulebean implements Serializable {
     
     ArrayList<Module> modules;
     Module module;
     
 
-    public ModuleBean() {
+    public Modulebean() {
         modules = new ArrayList<Module>();
         module = new Module();
     }
