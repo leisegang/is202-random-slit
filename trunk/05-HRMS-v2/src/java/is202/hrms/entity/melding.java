@@ -17,7 +17,7 @@ import javax.inject.Named;
 @SessionScoped
 public class melding implements Serializable {
     
-    private String txt;
+    private String radioButton;
     private String tekst;
     
     
@@ -26,12 +26,12 @@ public class melding implements Serializable {
         
     }
 
-    public String getTxt() {
-        return txt;
+    public String getradioButton() {
+        return radioButton;
     }
 
-    public void setTxt(String txt) {
-        this.txt = txt;
+    public void setradioButton(String radioButton) {
+        this.radioButton = radioButton;
     }
 
     public String getTekst() {
