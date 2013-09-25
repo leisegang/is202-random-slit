@@ -19,7 +19,7 @@
       "content" part of the template -->
       <ui:define name="content">
 
-              <h:dataTable value="#{modulelistbean.getModules()}" var="module">
+              <h:dataTable value="#{modulelistbean.getModules()}" var="module" border="1">
                 <h:column>
                     <f:facet name="header">Modul</f:facet>
                     <h:link value="#{module.name}" outcome="modul1?id=#{module.id}" />  
@@ -34,6 +34,8 @@
                 </h:column>                   
 
               </h:dataTable>
+          
+              <h:button value="Legg til modul" outcome="addModule" />
       </ui:define>
     </ui:composition>
 
