@@ -23,25 +23,23 @@
       "content" part of the template -->
       <ui:define name="content">
           
-          <h:outputText>#{modulelistbean.module.name}</h:outputText>
-        <h2>Modul 1</h2>
-        <h3>Beskrivelse</h3>
-            <p>I denne modulen skal du bli introdusert til Java, som er et objektorientert programmeringsspråk.</p>
-        <h3>Godkjenningskriterier</h3>
-            <p><b>For å få godkjent denne modulen må du:</b></p>
-            <ul>
-                <li>Kunne opprette klasser</li>
-                <li>Vite hva felter, konstruktorer og metoder er</li>
-                <li>Vite hva et parameter er og hvorfor vi bruker det</li>
-                <li>Kunne kompilere prosjekter</li>
-            </ul>
-        <h3>Ressurser</h3>
-            <p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank">Java SE downloads</a> -JDK vil veare nødvendig, det inneholder nyttige verktøy for utvikling og testing av programmer skrevet i Java programmeringsspråket.<br></br>
-                <a href="http://www.bluej.org/" target="_blank">BlueJ</a> -BlueJ er edditoren vi vil bruke.
-            </p>
-        <form>
-            <input type="button" value="Til proven" onclick="window.location.href='http://localhost:8080/hrms2/faces/index.xhtml'" />
-        </form>
+          <h:outputText><h2>#{modulelistbean.module.name}</h2></h:outputText><br></br>
+          
+          <h:outputText value="Beskrivelse:" style="font-weight: bold" /><br></br>
+          <h:outputText>#{modulelistbean.module.description}</h:outputText><br></br><br></br>
+          
+          <h:outputText value="Godkjenningskriterier:" style="font-weight: bold"/><br></br>
+          <h:outputText>#{modulelistbean.module.criteria}</h:outputText><br></br><br></br>
+          
+          <h:outputText value="Ressurser:" style="font-weight: bold"/><br></br>
+          <h:outputText>#{modulelistbean.module.resources}</h:outputText><br></br><br></br>
+          
+          <h:button value="Tilbake" outcome="module" />
+          <h:button value="Til proven" outcome="kommentar" />
+          
+          
+        
+          
       </ui:define>
     </ui:composition>
   </h:body>
