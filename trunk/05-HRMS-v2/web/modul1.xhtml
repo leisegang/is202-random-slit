@@ -3,6 +3,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
   <!-- This is the start (home) page of the application. It just displays
@@ -10,6 +11,9 @@
   <h:head>
     <title>IGNORED</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <f:metadata>
+            <f:viewParam name="id" value="#{modulelistbean.id}" />
+    </f:metadata>
   </h:head>
   <h:body>
     <!-- This page uses the template layout.xthml -->
@@ -19,6 +23,7 @@
       "content" part of the template -->
       <ui:define name="content">
           
+          <h:outputText>#{modulelistbean.module.name}</h:outputText>
         <h2>Modul 1</h2>
         <h3>Beskrivelse</h3>
             <p>I denne modulen skal du bli introdusert til Java, som er et objektorientert programmeringsspråk.</p>

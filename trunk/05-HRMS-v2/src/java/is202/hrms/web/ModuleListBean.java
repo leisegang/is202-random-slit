@@ -20,6 +20,7 @@ public class ModuleListBean implements Serializable {
     
     ArrayList<Module> modules;
     Module module;
+    int count = 1;
     
     
     public ModuleListBean() {
@@ -31,9 +32,35 @@ public class ModuleListBean implements Serializable {
         return modules.get(0).getName();
     }
     
+    public void getModule(int id) {
+        Module tempModule = null;
+        for(Module modul : modules) {
+          if(modul.getId() == id) {
+              tempModule = modul;
+          }  
+        }
+        module = tempModule;
+    }
+    
+    public void setId(int id) {
+        Module tempModule = null;
+        for(Module modul : modules) {
+          if(modul.getId() == id) {
+              tempModule = modul;
+          }  
+        }
+        module = tempModule;        
+    }
+    
+    public int getId() {
+        return module.getId();
+    }
+    
     public View save() {
+        module.setId(count);
         modules.add(module);
         module = new Module();
+        count++;
         return View.module;
     }
     
