@@ -9,6 +9,7 @@ package is202.hrms.web;
  * @author evenal
  */
 public enum View {
+    students,
     index,
     departments,
     department,
