@@ -21,6 +21,10 @@
       attribute, which is used to switch css styles, so that the active menu
       item is displayed in bold font. -->
       <h:panelGrid columns="1">
+          
+        <h:link value="students" outcome="students"
+                styleClass="#{fn:startsWith(view.viewId,'/students') ? 'bold' : 'plain'}" />
+          
         <h:link value="#{strings.index_menuitem}" outcome="index"
                 styleClass="#{fn:startsWith(view.viewId,'/index') ? 'bold' : 'plain'}" />
         
