@@ -15,6 +15,7 @@ public enum View {
     employees,
     employee,
     projects,
+    students,
     project,
     tilbakemelding,
     addModule,
