@@ -32,10 +32,10 @@ public class Department implements Serializable {
      * final version the db will take care of that, so it will be
      * safe to use List again. */
     @OneToMany(mappedBy = "department")
-    private Set<Employee> employees;
+    private Set<Student> employees;
 
     public Department() {
-        employees = new HashSet<Employee>();
+        employees = new HashSet<Student>();
     }
 
     public long getDepNo() {
@@ -54,13 +54,13 @@ public class Department implements Serializable {
         this.name = name;
     }
 
-    public void addEmployee(Employee emp) {
+    public void addEmployee(Student emp) {
         employees.add(emp);
     }
 
 
-    public List<Employee> getEmployees() {
-        return new ArrayList<Employee>(employees);
+    public List<Student> getEmployees() {
+        return new ArrayList<Student>(employees);
     }
 
     @Override
