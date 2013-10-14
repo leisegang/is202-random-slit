@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- This page contains the form for editing department details -->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+    <title>IGNORED</title>
+
+    <!-- This is the edit department page.
+    The department to edit is selected with the depno url parameter,
+    which is passed on to the setDepNo() method in depbean. -->
+    <f:metadata>
+      <f:viewParam name="roomNo" value="#{officebean.param}" />
+    </f:metadata>
+  </h:head>
+  <h:body>
+    <ui:composition template="/templates/layout.xhtml">
+      <ui:define name="content">
+        <h2>Office</h2>
+        <h:form>
+          <h:panelGrid columns="2">
+            <h:outputLabel value="Office No.:"/> <h:inputText id="roomno" value="#{officebean.roomNo}" readonly="#{officebean.updating}"/>
+            <h:outputLabel value="Size (sq.m):"/> <h:inputText id="size" value="#{officebean.sizeSqM}"/>
+            <h:commandButton value="Save"
+                             action="#{officebean.save}" />
+            <h:commandButton value="Delete"
+                             action="#{officebean.delete}" rendered="true" />
+            <h:commandButton value="Cancel"
+                             immediate="true"
+                             action="offices" />
+          </h:panelGrid>
+
+          </h:form>
+
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>

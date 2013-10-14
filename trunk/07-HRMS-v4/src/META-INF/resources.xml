@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+  <!-- MySQL
+  <Resource id="HrmsDS" type="javax.sql.DataSource">
+    JdbcDriver  com.mysql.jdbc.Driver
+    JdbcUrl jdbc:mysql://localhost:3306/hrms
+    UserName  root
+    Password  rootroot
+    JtaManaged  true
+  </Resource>
+-->
+
+  <!-- Derby network server
+  <Resource id="HrmsDS" type="javax.sql.DataSource">
+    JdbcDriver  org.apache.derby.jdbc.ClientDriver
+    JdbcUrl jdbc:derby://localhost:1527/hrms;create=true
+    UserName  app
+    Password  app
+    JtaManaged  true
+  </Resource>
+ -->
+
+  <!-- Derby (Embedded) -->
+  <Resource id="HrmsDB" type="javax.sql.DataSource">
+    JdbcDriver org.apache.derby.jdbc.EmbeddedDriver
+    JdbcUrl jdbc:derby:hrms;create=true
+    UserName app
+    Password app
+  </Resource>
+
+</resources>
