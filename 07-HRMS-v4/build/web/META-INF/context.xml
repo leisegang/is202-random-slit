@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/hrms4">
+  <!--
+  <Resource id="slitdb" type="javax.sql.DataSource">
+    JdbcDriver com.mysql.jdbc.Driver
+    JdbcUrl jdbc:mysql://localhost:3306/slitdb
+    UserName slit
+    Password slit
+    JtaManaged true
+  </Resource>
+-->
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="slitdb" password="halloder" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull" username="root"/>
+</Context>
