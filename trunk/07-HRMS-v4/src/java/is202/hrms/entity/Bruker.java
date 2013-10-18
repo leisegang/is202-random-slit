@@ -10,6 +10,7 @@ package is202.hrms.entity;
  *
  * @author kjetil
  */
+
 public class Bruker {
     
     private String fornavn;
