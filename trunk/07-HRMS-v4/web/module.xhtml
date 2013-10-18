@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <!-- This page contains the form for editing department details -->
 
@@ -8,58 +8,61 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-  <h:head>
-    <title>IGNORED</title>
+    <h:head>
+        <title>IGNORED</title>
 
-    <!-- This is the edit department page.
-    The department to edit is selected with the depno url parameter,
-    which is passed on to the setDepNo() method in depbean. -->
-    <f:metadata>
-      <f:viewParam name="moduleName" value="#{modulebean.param}" />
-    </f:metadata>
-  </h:head>
-  <h:body>
-    <ui:composition template="/templates/layout.xhtml">
-      <ui:define name="content">
-        <h2>Module</h2>
-        <h:form>
-          <h:panelGrid columns="1">
-              
-            <h:outputLabel value="Modul:"/> 
-            <h:inputText id="modulename" value="#{modulebean.moduleName}" readonly="#{modulebean.updating}"/>
-            <!--
-            <h:outputLabel value="Tidsfrist:"/> 
-            <h:inputText id="timeLimit" value=""/>
-            -->
-            
-            <h:outputLabel value="Beskrivelse:"/> 
-            <h:inputTextarea id="description" cols="40" rows="5" value="#{modulebean.description}"/>
-            
-            <h:outputLabel value="Godkjenningskriterier:"/> 
-            <h:inputTextarea id="criteria" cols="40" rows="5" value="#{modulebean.criteria}"/>
-            
-            </h:panelGrid>
-            
-            <h:selectOneRadio value="#{modulebean.difficulty}">
-                <f:selectItem itemLabel="Lett" itemValue="Lett" />
-                <f:selectItem itemLabel="Middels" itemValue="Middels" />
-                <f:selectItem itemLabel="Vanskelig" itemValue="Vanskelig" />
-            </h:selectOneRadio>            
+        <!-- This is the edit department page.
+        The department to edit is selected with the depno url parameter,
+        which is passed on to the setDepNo() method in depbean. -->
+        <f:metadata>
+            <f:viewParam name="moduleName" value="#{modulebean.param}" />
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/layout.xhtml">
+            <ui:define name="content">
+                <h2>Module</h2>
+                <h:form>
+                    <h:panelGrid columns="1">
 
-            
-            <h:commandButton value="Lagre"
-                             action="#{modulebean.save}" />
-            <h:commandButton value="Slett"
-                             action="#{modulebean.delete}" rendered="true" />
-            <h:commandButton value="Avbryt"
-                             immediate="true"
-                             action="modules" />
-            
+                        <h:outputLabel value="Modul:"/> 
+                        <h:inputText id="modulename" value="#{modulebean.module.moduleName}" />
+                        <h:outputText value="#{modulebean.errorMessage}"></h:outputText>
+
+                        <h:outputLabel value="Tidsfrist:"/> 
+                        <h:outputText value="yy.mm.dd" />
+                        <h:inputText id="timeLimit" value="#{modulebean.module.timeLimit}">
+                            <f:convertDateTime pattern="yy.MM.dd" />
+                        </h:inputText>
+
+                        <h:outputLabel value="Beskrivelse:"/> 
+                        <h:inputTextarea id="description" cols="40" rows="5" value="#{modulebean.module.description}"/>
+
+                        <h:outputLabel value="Godkjenningskriterier:"/> 
+                        <h:inputTextarea id="criteria" cols="40" rows="5" value="#{modulebean.module.criteria}"/>
+
+                    </h:panelGrid>
+
+                    <h:selectOneRadio value="#{modulebean.module.difficulty}">
+                        <f:selectItem itemLabel="Lett" itemValue="Lett" />
+                        <f:selectItem itemLabel="Middels" itemValue="Middels" />
+                        <f:selectItem itemLabel="Vanskelig" itemValue="Vanskelig" />
+                    </h:selectOneRadio>            
 
 
-          </h:form>
+                    <h:commandButton value="Lagre"
+                                     action="#{modulebean.save}" />
+                    <h:commandButton value="Slett"
+                                     action="#{modulebean.delete}" rendered="true" />
+                    <h:commandButton value="Avbryt"
+                                     immediate="true"
+                                     action="modules" />
 
-      </ui:define>
-    </ui:composition>
-  </h:body>
+
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
