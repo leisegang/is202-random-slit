@@ -18,5 +18,7 @@ public enum View {
     offices,
     projects,
     project,
-    prjmembers;
+    prjmembers,
+    student,
+    registration;
 }
