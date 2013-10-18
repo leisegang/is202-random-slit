@@ -20,5 +20,7 @@ public enum View {
     project,
     prjmembers,
     student,
+    modules,
+    module,
     registration;
 }
