@@ -108,9 +108,9 @@ public class StudentBean implements Serializable {
             updating = true;
             this.studentID = s.getStudentID();
             this.firstname = s.getFirstname();
-            
             this.lastname = s.getLastname();
             this.email = s.getEmail();
+            this.username = s.getUsername();
             this.password = s.getPassword();
             this.moduleNr = s.getModuleNr();
         } else {
