@@ -32,8 +32,13 @@ public class Module implements Serializable {
     /**
      * constructor
      */
-    public Module() {
-    
+    public Module(String moduleName, String description, String criteria, int numberOfStudents, String difficulty, Date timeLimit) {
+        this.moduleName = moduleName;
+        this.description = description;
+        this.criteria = criteria;
+        this.numberOfStudents = numberOfStudents;
+        this.difficulty = difficulty;
+        this.timeLimit = timeLimit;
     }
 
     public String getModuleName() {
