@@ -7,6 +7,7 @@ package is202.hrms.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,7 +19,9 @@ import javax.persistence.TemporalType;
 @Entity
 public class Module implements Serializable {
     
-    @Id
+    @Id @GeneratedValue
+    private long moduleId;
+    
     private String moduleName;
     
     private String description;
@@ -39,6 +42,18 @@ public class Module implements Serializable {
         this.numberOfStudents = numberOfStudents;
         this.difficulty = difficulty;
         this.timeLimit = timeLimit;
+    }
+
+    public long getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(long moduleId) {
+        this.moduleId = moduleId;
+    }
+    
+    public Module() {
+    
     }
 
     public String getModuleName() {

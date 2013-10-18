@@ -27,7 +27,7 @@
                      styleClass="data">
           <h:column>
             <f:facet name="header">Modul</f:facet>
-            <h:link outcome="module?moduleName=#{module.moduleName}">#{module.moduleName}</h:link>
+            <h:link outcome="module?moduleName=#{module.moduleId}">#{module.moduleName}</h:link>
           </h:column>
           <h:column>
             <f:facet name="header">Vanskelighetsgrad</f:facet>
@@ -38,6 +38,7 @@
           </h:column>
           <h:column>
               <f:facet name="header">Tidsfrist</f:facet>
+              #{module.timeLimit}
           </h:column>            
         </h:dataTable>
 

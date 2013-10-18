@@ -7,14 +7,12 @@ package is202.hrms.web;
 import is202.hrms.ejb.ModuleEJB;
 import is202.hrms.entity.Module;
 import java.io.Serializable;
-import java.util.Date;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 /**
  *
@@ -27,59 +25,83 @@ public class ModuleBean implements Serializable{
     @EJB private ModuleEJB moduleEjb; //dette er jeg ikke sikker på
     @Inject private Conversation conv; //dette er jeg ikke sikker på
     
-    //Module felter
-    private String moduleName;
-    private String description;
-    private String criteria;
-    private int numberOfStudents;
-    private String difficulty;
-    @Temporal(TemporalType.DATE)
-    private Date timeLimit;
+
+
+    private Module module;
+    private boolean moduleExists;
+    private String errorMessage;
+
     
     public ModuleBean() {
         //konstruktør
+
     }
     
-    //Brukes ikke
-    public String getParam() {
-        return null;
+    public long getParam() {
+        if(module == null) {
+            return 0;
+        }
+        else return module.getModuleId();
     }
     
     //Denne metoden brukes til å sende med parametere inn i modulen
-    public void setParam(String moduleName) {
+    public void setParam(long moduleId) {
         if (conv.isTransient()) {
             conv.begin();
         }
 
-        Module m = moduleEjb.find(moduleName);
-        if (null != m) {
+        if (moduleId > 0) {
             updating = true;
-            this.moduleName = m.getModuleName();
-            this.description = m.getDescription();
-            this.criteria = m.getCriteria();
-            this.numberOfStudents = m.getNumberOfStudents();
-            this.difficulty = m.getDifficulty();
-            this.timeLimit = m.getTimeLimit();
+            module = moduleEjb.find(moduleId);
             
         }
         else {
             updating = false;
+            module = new Module(); //modulen har en Id allerede fra den entrer siden (metadataen).
         }
 
     }
-    
-    public View save() {
-        conv.end();
-        Module m = new Module(moduleName, description, criteria, numberOfStudents, difficulty, timeLimit);
-        if (updating) moduleEjb.update(m);
-        else moduleEjb.insert(m);
-        return View.modules;
+
+    public Module getModule() {
+        return module;
     }
+
+    public void setModule(Module module) {
+        this.module = module;
+    }
+    
+    public String save() {
+        conv.end();
+        if (updating) moduleEjb.update(module);
+        else {
+            for(Module m : moduleEjb.findAll()) {
+                if(module.getModuleName().equals(m.getModuleName()) ) {
+                    moduleExists = true;
+                }
+            }
+            if(!moduleExists) {
+                moduleEjb.insert(module);
+            }
+            else{
+                errorMessage="modulen eksisterer";
+                return "module?moduleName=0";
+            }
+        }
+        return "modules";
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+    
 
     public View delete() {
         conv.end();
-        Module m = new Module(moduleName, description, criteria, numberOfStudents, difficulty, timeLimit);
-        if (updating) moduleEjb.delete(m);
+        if (updating) moduleEjb.delete(module);
         return View.modules;
     }
 
@@ -87,55 +109,6 @@ public class ModuleBean implements Serializable{
         return updating;
     }    
 
-    public String getModuleName() {
-        return moduleName;
-    }
-
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCriteria() {
-        return criteria;
-    }
-
-    public void setCriteria(String criteria) {
-        this.criteria = criteria;
-    }
-
-    public int getNumberOfStudents() {
-        return numberOfStudents;
-    }
-
-    public void setNumberOfStudents(int numberOfStudents) {
-        this.numberOfStudents = numberOfStudents;
-    }
-
-    public String getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
-    }
-
-    public Date getTimeLimit() {
-        return timeLimit;
-    }
-
-    public void setTimeLimit(Date timeLimit) {
-        this.timeLimit = timeLimit;
-    }
-    
-    
     
 }
 

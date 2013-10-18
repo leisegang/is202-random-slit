@@ -11,6 +11,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 /**
@@ -24,18 +25,26 @@ public class Student implements Serializable {
    
     @Id @GeneratedValue  
     private int studentID;
+    
     @NotNull @Size(min=1)
     private String firstname;
-        @NotNull @Size(min=1)
+    
+    @NotNull @Size(min=1)
     private String lastname;
-            @NotNull @Size(min=1)
+    
+    @NotNull @Size(min=1)
     private String email;
-              @NotNull @Size(min=1)  
+    
+    @NotNull @Size(min=1)  
     private String username;
-               @NotNull @Size(min=1)   
+    
+    @NotNull @Size(min=1)   
     private String password;
                
     private String moduleNr;
+    
+    @ManyToOne
+    private Department progresjon;    
 
     
     
