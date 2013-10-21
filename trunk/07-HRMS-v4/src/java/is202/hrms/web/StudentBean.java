@@ -57,15 +57,14 @@ public class StudentBean implements Serializable {
 
     }
 
-    public View save() {
+    public String save() {
         conv.end();
-        student = new Student();
         if (updating) {
             StudentEjb.update(student);
         } else {
             StudentEjb.insert(student);
         }
-        return View.registration;
+        return "registration";
     }
 
     public View delete() {
