@@ -24,11 +24,11 @@
         <h2>Student</h2>
         <h:form>
           <h:panelGrid columns="2">
-              <h:outputLabel value="Fornavn"/> <h:inputText id="firstname" value="#{studentbean.firstname}" readonly="#{studentbean.updating}"/>
-              <h:outputLabel value="Etternavn"/> <h:inputText id="lastname" value="#{studentbean.lastname}"/>
-              <h:outputLabel value="Email"/> <h:inputText id="email" value="#{studentbean.email}"/>
-              <h:outputLabel value="Brukernavn"/> <h:inputText id="username" value="#{studentbean.username}"/>
-              <h:outputLabel value="Passord"/> <h:inputText id="password" value="#{studentbean.password}"/>
+              <h:outputLabel value="Fornavn"/> <h:inputText id="firstname" value="#{studentbean.student.firstname}" readonly="#{studentbean.updating}"/>
+              <h:outputLabel value="Etternavn"/> <h:inputText id="lastname" value="#{studentbean.student.lastname}"/>
+              <h:outputLabel value="Email"/> <h:inputText id="email" value="#{studentbean.student.email}"/>
+              <h:outputLabel value="Brukernavn"/> <h:inputText id="username" value="#{studentbean.student.username}"/>
+              <h:outputLabel value="Passord"/> <h:inputText id="password" value="#{studentbean.student.password}"/>
             <h:commandButton value="Lagre"
                              action="#{studentbean.save}" />
             <h:commandButton value="Slett"
