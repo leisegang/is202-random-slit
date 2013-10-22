@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <div>TODO write content</div>
+    </body>
+</html>
+
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+  <!-- This is a facelet. The special tags with h: prefixes are
+  explained in the lecture notes -->
+  <h:head>
+    <title>Jsf Demo App</title>
+  </h:head>
+  <h:body>
+      
+      <h:link value="Modul siden" outcome="modul"></h:link>
+    <h1>JSF Demo App</h1>
+    <p>This is a simple appilcation where you are asked to enter
+      your name, in a textfield, in a form.</p>
+
+    <h2>The User Form</h2>
+    <p>The application will remember what you typed in the input
+      field. The "memory" is the name field in the class UserBean.</p>
+    <h:form>
+      <h:panelGrid columns="2">
+        <h:outputText value="Modulnr:"/>
+     
+        <h:inputText value="#{modul.nr}" />
+      
+        <h:outputText value="Name:"/>
+     
+        <h:inputText value="#{modul.name}" />
+        
+        <h:outputText value="Learning goals:"/>
+     
+        <h:inputText value="#{modul.Goals}" />
+      
+      
+      
+      
+      </h:panelGrid>
+      <h:commandButton value="Submit" action="index" />
+    </h:form>
+
+
+    </h:panelGrid>
+  </h:body>
+</html>
+
