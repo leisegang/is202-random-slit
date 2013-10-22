@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+  <!-- This is a facelet. The special tags with h: prefixes are
+  explained in the lecture notes -->
+  <h:head>
+    <title>Jsf Demo App</title>
+  </h:head>
+  <h:body>
+      
+      
+    <h1>JSF Demo App</h1>
+    <p>This is a simple appilcation where you are asked to enter
+      your name, in a textfield, in a form.</p>
+<h:link value="Modul siden" outcome="modul" />
+    <h2>The User Form</h2>
+    <p>The application will remember what you typed in the input
+      field. The "memory" is the name field in the class UserBean.</p>
+    <h:form>
+      <h:panelGrid columns="2">
+        <h:outputText value="Your name:"/>
+        <!-- This is the input field. The value attribute binds it
+        to the name property (field) in the bean named "user", which
+        is an instance of the UserBean class. -->
+        <h:inputText value="#{user.name}" />
+      </h:panelGrid>
+      <h:commandButton value="Submit" action="index" />
+    </h:form>
+
+    <h2>The Request Info</h2>
+    <p>This is the info the application gets about the request.
+    First the general stuff:</p>
+    <h:panelGrid columns="2">
+      <h:outputText value="URL = "/>
+      <h:outputText value="#{request.requestURL}"/>
+      <h:outputText value="ContextPath = "/>
+      <h:outputText value="#{request.contextPath}"/>
+      <h:outputText value="ServletPath = "/>
+      <h:outputText value="#{request.servletPath}"/>
+    </h:panelGrid>
+
+    <h3>Request Parameters</h3>
+    <p>This is the input from the form. Note that there are four
+      parameters, even though there is only one input field. The
+      others come from the submit button, and hidden controls used
+      by JSF.</p>
+   <h:dataTable value="#{request.parameterMap.keySet().toArray()}" var="key">
+      <h:column>#{key} = </h:column>
+      <h:column>#{param[key]}</h:column>
+    </h:dataTable>
+
+    <h3>Other Request Info</h3>
+    <h:panelGrid columns="2">
+      <h:outputText value="Server ip = "/>
+      <h:outputText value="#{request.localAddr}" />
+      <h:outputText value="Server name = "/>
+      <h:outputText value="#{request.localName}" />
+      <h:outputText value="Server port = "/>
+      <h:outputText value="#{request.localPort}" />
+      <h:outputText value="Preferred language = "/>
+      <h:outputText value="#{request.locale}" />
+      <h:outputText value="Client ip = "/>
+      <h:outputText value="#{request.remoteAddr}" />
+      <h:outputText value="Client name = "/>
+      <h:outputText value="#{request.remoteHost}" />
+      <h:outputText value="Client port = "/>
+      <h:outputText value="#{request.remotePort}" />
+      <h:outputText value="User name = "/>
+      <h:outputText value="#{request.remoteUser}" />
+    </h:panelGrid>
+  </h:body>
+</html>
+
