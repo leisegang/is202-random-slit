@@ -5,11 +5,13 @@
 package is202.hrms.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -33,7 +35,8 @@ public class Module implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date timeLimit;
     
-    private List<Progression> progression;
+    @OneToMany(mappedBy = "module")
+    private List<Progression> progression = new ArrayList<Progression>();
     
     /**
      * constructor
