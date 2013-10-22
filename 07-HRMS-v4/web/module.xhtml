@@ -26,8 +26,8 @@
                     <h:panelGrid columns="1">
 
                         <h:outputLabel value="Modul:"/> 
-                        <h:inputText id="modulename" value="#{modulebean.module.moduleName}" />
-                        <h:outputText value="#{modulebean.errorMessage}"></h:outputText>
+                        <h:inputText id="modulename" value="#{modulebean.module.moduleName}" validator="#{modulebean.checkModuleName}" required="true" />
+                        <h:message style="color: red" for="modulename" />                        
 
                         <h:outputLabel value="Tidsfrist:"/> 
                         <h:outputText value="yy.mm.dd" />
