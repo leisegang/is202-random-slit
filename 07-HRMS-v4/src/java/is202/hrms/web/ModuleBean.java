@@ -8,13 +8,11 @@ import is202.hrms.ejb.ModuleEJB;
 import is202.hrms.entity.Module;
 import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.enterprise.context.Conversation;
-import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 
@@ -23,12 +21,10 @@ import javax.inject.Named;
  * @author Vetle
  */
 @Named ("modulebean")
-@ConversationScoped //finn ut hva denne typen Scope gjør
+@SessionScoped //skal endres til SessionScoped!!
 public class ModuleBean implements Serializable{
     private boolean updating; //hva brukes dette feltet til
     @EJB private ModuleEJB moduleEjb; //dette er jeg ikke sikker på
-    @Inject private Conversation conv; //dette er jeg ikke sikker på
-    
 
 
     private Module module;
@@ -52,10 +48,6 @@ public class ModuleBean implements Serializable{
     //Denne metoden brukes til å sende med parametere inn i modulen
     public void setParam(long moduleId) {
         param = moduleId;
-        if (conv.isTransient()) {
-            conv.begin();
-        }
-
         if (moduleId > 0) {
             updating = true;
             module = moduleEjb.find(moduleId);
@@ -69,7 +61,6 @@ public class ModuleBean implements Serializable{
     }
     
     public void checkModuleName(FacesContext context, UIComponent component, Object value) {
-        
         String input = (String)value;
         for(Module m : moduleEjb.findAll()) {
             if(input.equals(m.getModuleName())) {
@@ -94,7 +85,6 @@ public class ModuleBean implements Serializable{
     }
     
     public String save() {
-        conv.end();
         if (updating) moduleEjb.update(module);
         else {
             for(Module m : moduleEjb.findAll()) {
@@ -119,7 +109,6 @@ public class ModuleBean implements Serializable{
     
 
     public View delete() {
-        conv.end();
         if (updating) moduleEjb.delete(module);
         return View.modules;
     }

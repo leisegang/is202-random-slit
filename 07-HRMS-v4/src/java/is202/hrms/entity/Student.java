@@ -8,6 +8,7 @@
 package is202.hrms.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -43,8 +44,8 @@ public class Student implements Serializable {
                
     private String moduleNr;
     
-    @ManyToOne
-    private Department progresjon;    
+   // @ManyToOne
+    //private List<Progression> progression;    
 
     
     

@@ -9,7 +9,7 @@ import is202.hrms.entity.Student;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
-import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,14 +18,13 @@ import javax.inject.Named;
  * @author Vlorjan og Kjetil
  */
 @Named("studentbean")
-@ConversationScoped
+@SessionScoped
 public class StudentBean implements Serializable {
 
     private boolean updating;
     @EJB
     private StudentEJB StudentEjb;
-    @Inject
-    private Conversation conv;
+
     //felter fra studentklassen
     private Student student;
 
@@ -41,10 +40,6 @@ public class StudentBean implements Serializable {
     
 
     public void setParam(long studentID) {
-        if (conv.isTransient()) {
-            conv.begin();
-        }
-
         if (studentID > 0) {
             updating = true;
             student = StudentEjb.find(studentID);
@@ -58,7 +53,6 @@ public class StudentBean implements Serializable {
     }
 
     public String save() {
-        conv.end();
         if (updating) {
             StudentEjb.update(student);
         } else {
@@ -68,7 +62,6 @@ public class StudentBean implements Serializable {
     }
 
     public View delete() {
-        conv.end();
         student = new Student();
         if (updating) {
             StudentEjb.delete(student);
