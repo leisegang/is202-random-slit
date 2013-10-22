@@ -10,6 +10,10 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,6 +34,7 @@ public class ModuleBean implements Serializable{
     private Module module;
     private boolean moduleExists;
     private String errorMessage;
+    private long param;
 
     
     public ModuleBean() {
@@ -46,6 +51,7 @@ public class ModuleBean implements Serializable{
     
     //Denne metoden brukes til å sende med parametere inn i modulen
     public void setParam(long moduleId) {
+        param = moduleId;
         if (conv.isTransient()) {
             conv.begin();
         }
@@ -61,7 +67,24 @@ public class ModuleBean implements Serializable{
         }
 
     }
-
+    
+    public void checkModuleName(FacesContext context, UIComponent component, Object value) {
+        
+        String input = (String)value;
+        for(Module m : moduleEjb.findAll()) {
+            if(input.equals(m.getModuleName())) {
+                if(m.getModuleId()==param) {
+                //ikke error
+                }
+                else{
+                errorMessage="Modulnavnet eksisterer";
+                FacesMessage msg = new FacesMessage(getErrorMessage()); 
+                    throw new ValidatorException(msg);
+                }
+                }
+            }
+        }
+    
     public Module getModule() {
         return module;
     }
@@ -81,10 +104,6 @@ public class ModuleBean implements Serializable{
             }
             if(!moduleExists) {
                 moduleEjb.insert(module);
-            }
-            else{
-                errorMessage="modulen eksisterer";
-                return "module?moduleName=0";
             }
         }
         return "modules";
