@@ -6,6 +6,7 @@ package is202.hrms.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,6 +32,8 @@ public class Module implements Serializable {
     
     @Temporal(TemporalType.DATE)
     private Date timeLimit;
+    
+    private List<Progression> progression;
     
     /**
      * constructor
