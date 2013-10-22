@@ -17,7 +17,7 @@
       <ui:define name="content">
         <!-- This page displays the list of departments with
         links for editing, and a button for creating new ones -->
-        <h2>Registrering</h2>
+        <h2>Student</h2>
 
         <!-- The dataTable tag is used to display the list.
         It works a bit like a for-each loop in java. The
@@ -43,9 +43,38 @@
             <f:facet name="header">ModulNr</f:facet>
             #{student.moduleNr}
           </h:column>
+            
         </h:dataTable>
+                <h:link value="Ny student" outcome="student?studentID=0" />
+        
+        
+                <h2>Foreleser</h2>
 
-        <h:link value="Ny student" outcome="student?studentID=0" />
+        <!-- The dataTable tag is used to display the list.
+        It works a bit like a for-each loop in java. The
+        var attribute binds the name dep to each department in turn
+        -->
+        <h:dataTable value="#{foreleserlistbean.forelesers}" var="foreleser"
+                     styleClass="data">
+          <h:column>
+            <f:facet name="header">Foreleser ID</f:facet>
+            <h:link outcome="student?studentID=#{foreleser.foreleserID}">#{foreleser.foreleserID}</h:link>
+          </h:column>
+          <h:column>
+            <f:facet name="header">Fornavn</f:facet>
+            #{foreleser.firstname}
+          </h:column>
+            
+                     <h:column>
+            <f:facet name="header">Etternavn</f:facet>
+            #{foreleser.lastname}
+          </h:column>
+            
+
+        </h:dataTable>
+                <h:link value="Ny foreleser" outcome="foreleser?foreleserID=0" />
+
+
       </ui:define>
     </ui:composition>
   </h:body>
