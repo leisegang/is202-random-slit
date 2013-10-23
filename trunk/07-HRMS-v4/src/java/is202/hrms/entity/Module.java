@@ -19,6 +19,7 @@ import javax.persistence.TemporalType;
  *
  * @author Vetle
  */
+
 @Entity
 public class Module implements Serializable {
     
@@ -35,8 +36,8 @@ public class Module implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date timeLimit;
     
-    @OneToMany(mappedBy = "module")
-    private List<Progression> progression = new ArrayList<Progression>();
+    @OneToMany(mappedBy = "modul")
+    private List<Progression> progression;
     
     /**
      * constructor
@@ -50,6 +51,10 @@ public class Module implements Serializable {
         this.timeLimit = timeLimit;
     }
 
+    public void addProgression(Progression p) {
+        progression.add(p);
+    }
+    
     public long getModuleId() {
         return moduleId;
     }
@@ -59,7 +64,7 @@ public class Module implements Serializable {
     }
     
     public Module() {
-    
+        progression = new ArrayList<Progression>();
     }
 
     public String getModuleName() {
@@ -108,6 +113,28 @@ public class Module implements Serializable {
 
     public void setTimeLimit(Date timeLimit) {
         this.timeLimit = timeLimit;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + (int) (this.moduleId ^ (this.moduleId >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Module other = (Module) obj;
+        if (this.moduleId != other.moduleId) {
+            return false;
+        }
+        return true;
     }
     
 }

@@ -22,11 +22,9 @@ import javax.validation.constraints.Size;
  */
 @Entity
 public class Student implements Serializable {
-
-    private static final long serialVersionUID = 1L;
    
     @Id @GeneratedValue  
-    private int studentID;
+    private long studentID;
     
     @NotNull @Size(min=1)
     private String firstname;
@@ -42,19 +40,19 @@ public class Student implements Serializable {
     
     @NotNull @Size(min=1)   
     private String password;
-               
-    private String moduleNr;
     
     @OneToMany(mappedBy = "student")
-    private List<Progression> progression = new ArrayList<Progression>();    
+    private List<Progression> progression;    
 
     
     
 public Student () {
-    
+    progression = new ArrayList<Progression>();
 }
 
-    public Student(int studentID, String firstname, String lastname, String email, String username, String password) {
+   
+
+    public Student(long studentID, String firstname, String lastname, String email, String username, String password) {
         this.studentID = studentID;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -63,13 +61,26 @@ public Student () {
         this.password = password;
     }
 
+    public List<Progression> getProgression() {
+        return progression;
+    }
+
+    public void setProgression(List<Progression> progression) {
+        this.progression = progression;
+    }
+
+   
 
 
-    public int getStudentID() {
+    public void addProgression(Progression p) {
+        progression.add(p);
+    }
+    
+    public long getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(int studentID) {
+    public void setStudentID(long studentID) {
         this.studentID = studentID;
     }
 
@@ -113,18 +124,10 @@ public Student () {
         this.password = password;
     }
 
-    public String getModuleNr() {
-        return moduleNr;
-    }
-
-    public void setModuleNr(String moduleNr) {
-        this.moduleNr = moduleNr;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + this.studentID;
+        int hash = 3;
+        hash = 43 * hash + (int) (this.studentID ^ (this.studentID >>> 32));
         return hash;
     }
 
@@ -142,6 +145,8 @@ public Student () {
         }
         return true;
     }
+
+
 
 
 

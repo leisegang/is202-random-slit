@@ -38,8 +38,14 @@
                              action="registration" />
           </h:panelGrid>
 
-          </h:form>
-
+          
+        <h:dataTable value="#{studentbean.student.progression}" var="prog" >
+        #{prog.module.moduleName}
+        
+        </h:dataTable>
+        <h:outputText value="#{studentbean.student.progression.size()}" ></h:outputText>
+        <h:outputText value="#{studentbean.student.getProgression().size()}" ></h:outputText>
+</h:form>
       </ui:define>
     </ui:composition>
   </h:body>
