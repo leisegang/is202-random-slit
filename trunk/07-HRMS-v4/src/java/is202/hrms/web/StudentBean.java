@@ -28,8 +28,8 @@ import javax.inject.Named;
 @ConversationScoped
 public class StudentBean implements Serializable {
 
-    @Inject Conversation conv;
-    
+    @Inject
+    Conversation conv;
     private boolean updating;
     @EJB
     private StudentEJB StudentEjb;
@@ -37,52 +37,47 @@ public class StudentBean implements Serializable {
     private ModuleEJB moduleEjb;
     @EJB
     private ProgressionEJB progressionEjb;
-
     //felter fra studentklassen
     private Student student;
-    
     Progression prog;
 
     public StudentBean() {
     }
 
     public long getParam() {
-        if(student == null) {
+        if (student == null) {
             return 0;
+        } else {
+            return student.getStudentID();
         }
-        else return student.getStudentID();
     }
-    
-public List<Progression> getProgression() {
+
+    public List<Progression> getProgression() {
+      
         return student.getProgression();
     }
+
     public void setParam(long studentID) {
-        if(conv.isTransient()) {
+        if (conv.isTransient()) {
             conv.begin();
         }
-        ProgId progId = new ProgId(studentID, 2751);
+        ProgId progId = new ProgId(studentID, 3401);
         prog = progressionEjb.find(progId);
-        if (studentID > 0) {
+        if (prog != null) {
             updating = true;
             student = StudentEjb.find(studentID);
-            List<Progression> pro = new ArrayList<Progression>();
-            for(Progression p : progressionEjb.findAll()) {
-                if(p.getStudent().getStudentID() == student.getStudentID()) {
-                    pro.add(p);
-                }
-            }
-                    
             
-        }
-        else {
+            
+
+        } else {
             updating = false;
             student = new Student();
-            Module m = moduleEjb.find(2751);
+            Module m = moduleEjb.find(3401);
             prog = new Progression();
             prog.setStudent(student);
             prog.setModule(m);
-            
-            
+
+
         }
 
     }
@@ -92,10 +87,11 @@ public List<Progression> getProgression() {
             StudentEjb.update(student);
         } else {
             StudentEjb.insert(student);
-            
-           
+            progressionEjb.insert(prog);
+
+
         }
-            conv.end();
+        conv.end();
         return "registration";
     }
 
@@ -118,7 +114,4 @@ public List<Progression> getProgression() {
     public void setStudent(Student student) {
         this.student = student;
     }
-    
-    
-    
 }

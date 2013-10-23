@@ -59,6 +59,10 @@ public class Module implements Serializable {
         return moduleId;
     }
 
+    public List<Progression> getProgression() {
+        return progression;
+    }
+
     public void setModuleId(long moduleId) {
         this.moduleId = moduleId;
     }

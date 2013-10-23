@@ -28,4 +28,10 @@ public class ModuleEJB extends AbstractFacade<Module> {
     public ModuleEJB() {
         super(Module.class);
     }
+    
+       public Module find(long depNo) {
+        Module dep = super.find(depNo);
+        if (null != dep) dep.getProgression();
+        return dep;
+    }
 }
