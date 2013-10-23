@@ -29,6 +29,7 @@
               <h:outputLabel value="Email"/> <h:inputText id="email" value="#{studentbean.student.email}"/>
               <h:outputLabel value="Brukernavn"/> <h:inputText id="username" value="#{studentbean.student.username}"/>
               <h:outputLabel value="Passord"/> <h:inputText id="password" value="#{studentbean.student.password}"/>
+              
             <h:commandButton value="Lagre"
                              action="#{studentbean.save}" />
             <h:commandButton value="Slett"
@@ -39,11 +40,17 @@
           </h:panelGrid>
 
           
-        <h:dataTable value="#{studentbean.student.progression}" var="prog" >
-        #{prog.module.moduleName}
+        <h:dataTable value="#{studentbean.getProgression()}" var="prog" >
+            
+             <h:column>
+            <f:facet name="header">hul</f:facet>
+            
+            #{prog.module.moduleName}
+          </h:column>
+       
         
         </h:dataTable>
-        <h:outputText value="#{studentbean.student.progression.size()}" ></h:outputText>
+           
         <h:outputText value="#{studentbean.student.getProgression().size()}" ></h:outputText>
 </h:form>
       </ui:define>

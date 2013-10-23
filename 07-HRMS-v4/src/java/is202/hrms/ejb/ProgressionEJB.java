@@ -49,4 +49,11 @@ public class ProgressionEJB extends AbstractFacade<Progression> {
         return prog;
         
     }
+   
+       public Progression find(long depNo) {
+        Progression dep = super.find(depNo);
+        if (null != dep) dep.getModule();
+        module.findAll();
+        return dep;
+    }
 }
