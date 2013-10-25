@@ -40,18 +40,18 @@
           </h:panelGrid>
 
           
-        <h:dataTable value="#{studentbean.getProgression()}" var="prog" >
+            <h:dataTable value="#{studentbean.modules}" var="prog" >
             
              <h:column>
-            <f:facet name="header">hul</f:facet>
-            
-            #{prog.module.moduleName}
+            <f:facet name="header">På modul:</f:facet>
+            <h:outputText value="#{prog.moduleName}" /> <!--laster inn mye i minnet-->
           </h:column>
        
         
         </h:dataTable>
            
         <h:outputText value="#{studentbean.student.getProgression().size()}" ></h:outputText>
+        <h:outputText value="" />
 </h:form>
       </ui:define>
     </ui:composition>

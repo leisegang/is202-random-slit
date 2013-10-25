@@ -5,7 +5,7 @@
 package is202.hrms.web;
 
 import is202.hrms.ejb.ModuleEJB;
-import is202.hrms.entity.Module;
+import is202.hrms.entity.Modul;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -27,8 +27,8 @@ public class ModuleListBean implements Serializable {
     public ModuleListBean() {
     }
 
-    public List<Module> getModules() {
-        List<Module> l = moduleEjb.findAll();
+    public List<Modul> getModules() {
+        List<Modul> l = moduleEjb.findAll();
         return l;
     }
 

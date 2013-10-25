@@ -4,7 +4,7 @@
  */
 package is202.hrms.ejb;
 
-import is202.hrms.entity.Module;
+import is202.hrms.entity.Modul;
 import is202.hrms.entity.Progression;
 import is202.hrms.entity.Student;
 import javax.ejb.EJB;
@@ -38,7 +38,7 @@ public class ProgressionEJB extends AbstractFacade<Progression> {
     @Override
     public Progression insert(Progression prog) {
         
-        Module modul = module.find(prog.getModule().getModuleId());
+        Modul modul = module.find(prog.getModule().getModuleId());
         Student stud = student.find(prog.getStudent().getStudentID());
         prog = super.insert(prog);
         modul.addProgression(prog);

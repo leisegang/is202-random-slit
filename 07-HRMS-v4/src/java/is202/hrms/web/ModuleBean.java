@@ -5,7 +5,7 @@
 package is202.hrms.web;
 
 import is202.hrms.ejb.ModuleEJB;
-import is202.hrms.entity.Module;
+import is202.hrms.entity.Modul;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -27,7 +27,7 @@ public class ModuleBean implements Serializable{
     @EJB private ModuleEJB moduleEjb; //dette er jeg ikke sikker på
 
 
-    private Module module;
+    private Modul module;
     private boolean moduleExists;
     private String errorMessage;
     private long param;
@@ -55,14 +55,14 @@ public class ModuleBean implements Serializable{
         }
         else {
             updating = false;
-            module = new Module(); //modulen har en Id allerede fra den entrer siden (metadataen).
+            module = new Modul(); //modulen har en Id allerede fra den entrer siden (metadataen).
         }
 
     }
     
     public void checkModuleName(FacesContext context, UIComponent component, Object value) {
         String input = (String)value;
-        for(Module m : moduleEjb.findAll()) {
+        for(Modul m : moduleEjb.findAll()) {
             if(input.equals(m.getModuleName())) {
                 if(m.getModuleId()==param) {
                 //ikke error
@@ -76,18 +76,18 @@ public class ModuleBean implements Serializable{
             }
         }
     
-    public Module getModule() {
+    public Modul getModule() {
         return module;
     }
 
-    public void setModule(Module module) {
+    public void setModule(Modul module) {
         this.module = module;
     }
     
     public String save() {
         if (updating) moduleEjb.update(module);
         else {
-            for(Module m : moduleEjb.findAll()) {
+            for(Modul m : moduleEjb.findAll()) {
                 if(module.getModuleName().equals(m.getModuleName()) ) {
                     moduleExists = true;
                 }

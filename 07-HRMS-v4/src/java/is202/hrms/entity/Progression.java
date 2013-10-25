@@ -24,7 +24,7 @@ public class Progression implements Serializable {
     private Student student;
     
     @Id @ManyToOne
-    private Module modul;
+    private Modul modul;
 
     public Student getStudent() {
         return student;
@@ -34,11 +34,11 @@ public class Progression implements Serializable {
         this.student = student;
     }
 
-    public Module getModule() {
+    public Modul getModule() {
         return modul;
     }
 
-    public void setModule(Module module) {
+    public void setModule(Modul module) {
         this.modul = module;
     }
 
