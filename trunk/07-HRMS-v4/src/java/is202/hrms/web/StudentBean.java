@@ -7,7 +7,7 @@ package is202.hrms.web;
 import is202.hrms.ejb.ModuleEJB;
 import is202.hrms.ejb.ProgressionEJB;
 import is202.hrms.ejb.StudentEJB;
-import is202.hrms.entity.Module;
+import is202.hrms.entity.Modul;
 import is202.hrms.entity.ProgId;
 import is202.hrms.entity.Progression;
 import is202.hrms.entity.Student;
@@ -40,6 +40,8 @@ public class StudentBean implements Serializable {
     //felter fra studentklassen
     private Student student;
     Progression prog;
+    
+    ArrayList<Modul> modules;
 
     public StudentBean() {
     }
@@ -57,11 +59,20 @@ public class StudentBean implements Serializable {
         return student.getProgression();
     }
 
+    public ArrayList<Modul> getModules() {
+        modules = new ArrayList<Modul>();
+        for(Progression p : student.getProgression()) {
+           modules.add(moduleEjb.find(p.getModule().getModuleId()));
+           
+        }
+        return modules;
+    }
+    
     public void setParam(long studentID) {
         if (conv.isTransient()) {
             conv.begin();
         }
-        ProgId progId = new ProgId(studentID, 3401);
+        ProgId progId = new ProgId(studentID, 3851);
         prog = progressionEjb.find(progId);
         if (prog != null) {
             updating = true;
@@ -72,7 +83,7 @@ public class StudentBean implements Serializable {
         } else {
             updating = false;
             student = new Student();
-            Module m = moduleEjb.find(3401);
+            Modul m = moduleEjb.find(3851);
             prog = new Progression();
             prog.setStudent(student);
             prog.setModule(m);

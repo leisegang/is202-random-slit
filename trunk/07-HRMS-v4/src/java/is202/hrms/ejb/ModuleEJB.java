@@ -4,7 +4,7 @@
  */
 package is202.hrms.ejb;
 
-import is202.hrms.entity.Module;
+import is202.hrms.entity.Modul;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Vetle
  */
 @Stateless
-public class ModuleEJB extends AbstractFacade<Module> {
+public class ModuleEJB extends AbstractFacade<Modul> {
 
     @PersistenceContext
     private EntityManager em;
@@ -26,11 +26,11 @@ public class ModuleEJB extends AbstractFacade<Module> {
     }
 
     public ModuleEJB() {
-        super(Module.class);
+        super(Modul.class);
     }
     
-       public Module find(long depNo) {
-        Module dep = super.find(depNo);
+       public Modul find(long depNo) {
+        Modul dep = super.find(depNo);
         if (null != dep) dep.getProgression();
         return dep;
     }
