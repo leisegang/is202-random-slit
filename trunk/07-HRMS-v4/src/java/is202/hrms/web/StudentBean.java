@@ -37,11 +37,14 @@ public class StudentBean implements Serializable {
     private ModuleEJB moduleEjb;
     @EJB
     private ProgressionEJB progressionEjb;
-    //felter fra studentklassen
+
     private Student student;
-    Progression prog;
     
-    ArrayList<Modul> modules;
+    private Progression prog;
+    
+    private ArrayList<Modul> modules;
+    
+    private Modul module; //kan jeg bruke denne? Ikke enda brukt?
 
     public StudentBean() {
     }
@@ -72,7 +75,14 @@ public class StudentBean implements Serializable {
         if (conv.isTransient()) {
             conv.begin();
         }
-        ProgId progId = new ProgId(studentID, 3851);
+        ProgId progId = null;
+        long modId = 0;
+        for(Modul m : moduleEjb.findAll()) {
+            if("Introduksjon".equals(m.getModuleName())) {
+                modId = m.getModuleId();
+                progId = new ProgId(studentID, modId);
+            }
+        }
         prog = progressionEjb.find(progId);
         if (prog != null) {
             updating = true;
@@ -83,7 +93,7 @@ public class StudentBean implements Serializable {
         } else {
             updating = false;
             student = new Student();
-            Modul m = moduleEjb.find(3851);
+            Modul m = moduleEjb.find(modId); //Hvis det ikke eksisterer noen modul med navn "Introduksjon", kommer det feilmelding, men objektet blir fremdeles opprettet uten verdier.
             prog = new Progression();
             prog.setStudent(student);
             prog.setModule(m);
