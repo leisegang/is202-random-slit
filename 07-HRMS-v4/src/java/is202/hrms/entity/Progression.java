@@ -20,11 +20,9 @@ import javax.persistence.ManyToOne;
 public class Progression implements Serializable {
    
     
-    @Id @ManyToOne 
-    private Student student;
+    @Id @ManyToOne private Student student;
+    @Id @ManyToOne private Modul modul;
     
-    @Id @ManyToOne
-    private Modul modul;
 
     public Student getStudent() {
         return student;
