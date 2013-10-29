@@ -68,11 +68,10 @@ public class ForeleserBean implements Serializable {
     }
 
     public View delete() {
-        conv.end();
-        foreleser = new Foreleser();
         if (updating) {
             ForeleserEjb.delete(foreleser);
         }
+        conv.end();        
         return View.registration;
     }
 

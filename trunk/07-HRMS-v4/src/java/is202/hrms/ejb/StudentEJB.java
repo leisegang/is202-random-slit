@@ -4,7 +4,6 @@
  */
 package is202.hrms.ejb;
 
-import is202.hrms.entity.Progression;
 import is202.hrms.entity.Student;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

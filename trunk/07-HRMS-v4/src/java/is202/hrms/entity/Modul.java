@@ -49,6 +49,7 @@ public class Modul implements Serializable {
         this.numberOfStudents = numberOfStudents;
         this.difficulty = difficulty;
         this.timeLimit = timeLimit;
+        progression = new ArrayList<Progression>();
     }
 
     public void addProgression(Progression p) {
