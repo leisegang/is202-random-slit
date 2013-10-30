@@ -85,7 +85,7 @@ public class StudentBean implements Serializable {
         } else {
             updating = false;
             student = new Student();
-            Modul m = null;
+            Modul m;
             if(moduleExistence) {
                 m = moduleEjb.find(modId);
             } else {

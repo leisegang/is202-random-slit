@@ -85,7 +85,7 @@ public class ModuleBean implements Serializable{
     }
     
     public String save() {
-        if (updating) moduleEjb.update(module); //Vil kunne trenge denne
+        if (updating) moduleEjb.update(module); 
         else {
             for(Modul m : moduleEjb.findAll()) {
                 if(module.getModuleName().equals(m.getModuleName()) ) {

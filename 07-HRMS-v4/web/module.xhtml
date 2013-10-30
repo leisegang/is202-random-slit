@@ -52,15 +52,18 @@
 
                     <h:commandButton value="Lagre"
                                      action="#{modulebean.save}" />
-                    <h:commandButton value="Slett"
-                                     action="#{modulebean.delete}" rendered="true" />
-                    <h:commandButton value="Avbryt"
-                                     immediate="true"
-                                     action="modules" />
+
 
 
 
                 </h:form>
+                <h:form>
+                    <h:commandButton value="Slett"
+                                     action="#{modulebean.delete}" rendered="true" />
+                    <h:commandButton value="Avbryt"
+                                     immediate="true"
+                                     action="modules" />   
+                </h:form>    
 
             </ui:define>
         </ui:composition>
