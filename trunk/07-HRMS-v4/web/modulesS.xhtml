@@ -27,7 +27,8 @@
                      styleClass="data">
           <h:column>
             <f:facet name="header">Modul</f:facet>
-            <h:link outcome="module?moduleName=#{module.moduleId}">#{module.moduleName}</h:link>
+            <h:link rendered="#{signinbean.foreleser}" outcome="module?moduleName=#{module.moduleId}">#{module.moduleName}</h:link>
+            <h:link rendered="#{!signinbean.foreleser}" outcome="moduleStud?moduleName=#{module.moduleId}">#{module.moduleName}</h:link>
           </h:column>
           <h:column>
             <f:facet name="header">Vanskelighetsgrad</f:facet>
@@ -42,7 +43,7 @@
           </h:column>            
         </h:dataTable>
 
-        <!--<h:link value="Ny Modul" outcome="module?moduleName=0" /> -->
+        <h:link rendered="#{signinbean.foreleser}" value="Ny Modul" outcome="module?moduleName=0" />
       </ui:define>
     </ui:composition>
   </h:body>
