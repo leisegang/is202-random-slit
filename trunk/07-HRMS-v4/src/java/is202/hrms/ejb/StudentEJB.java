@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Vlorjan
+ * @author Vlorjan og Kjetil
  */
 @Stateless
 public class StudentEJB extends AbstractFacade<Student> {
