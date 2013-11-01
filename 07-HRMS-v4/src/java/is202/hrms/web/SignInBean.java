@@ -47,10 +47,10 @@ public class SignInBean implements Serializable{
         System.out.println(password + "" + username);
         for (Student s: studentEjb.findAll()){
             if (username.equals(s.getUsername() ) && password.equals(s.getPassword())) {
-                return "index";
+                return "modules";
             }
        }
-     return "error";   
+     return "loginFail.xhtml";   
         
 }
 }
