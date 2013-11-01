@@ -4,7 +4,9 @@
  */
 package is202.hrms.web;
 
+import is202.hrms.ejb.ForeleserEJB;
 import is202.hrms.ejb.StudentEJB;
+import is202.hrms.entity.Foreleser;
 import is202.hrms.entity.Student;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -19,16 +21,27 @@ import javax.inject.Named;
 @SessionScoped
 public class SignInBean implements Serializable{
     @EJB private StudentEJB studentEjb;
+    @EJB private ForeleserEJB foreleserEjb;
     private String username;
     private String password;
+    private boolean foreleser;
 
     public SignInBean() {
         username="";
         password = "";
+        foreleser = false;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public boolean isForeleser() {
+        return foreleser;
+    }
+
+    public void setForeleser(boolean foreleser) {
+        this.foreleser = foreleser;
     }
 
     public void setUsername(String username) {
@@ -47,9 +60,17 @@ public class SignInBean implements Serializable{
 
         for (Student s: studentEjb.findAll()){
             if (username.equals(s.getUsername() ) && password.equals(s.getPassword())) {
+                foreleser = false;
                 return "indexS";
             }
        }
+        for (Foreleser f: foreleserEjb.findAll()){
+            if (username.equals(f.getUsername() ) && password.equals(f.getPassword())) {
+                foreleser = true;
+                return "hrms";
+            }
+       }        
+        
      return "loginFail.xhtml";   
         
 }
