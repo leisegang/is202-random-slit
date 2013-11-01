@@ -55,7 +55,7 @@ unchanged, for the rest of the course -->
   application. If a url that specifies a folder is requested, GlassFish
   will try these files, in the listed order -->
   <welcome-file-list>
-    <welcome-file>hrms.xhtml</welcome-file>
-    <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>login.xhtml</welcome-file>
+    <welcome-file>login.xhtml</welcome-file>
   </welcome-file-list>
 </web-app>
