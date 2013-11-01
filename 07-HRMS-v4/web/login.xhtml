@@ -21,8 +21,8 @@
         <h:form>
           <h:panelGrid columns="2">
 
-              <h:outputLabel value=""/> <h:inputText id="username" value="#{signinbean.username}"/>
-              <h:outputLabel value=""/> <h:inputText id="password" value="#{signinbean.password}"/>
+              <h:outputLabel value="Brukernavn"/> <h:inputText id="username" value="#{signinbean.username}"/>
+              <h:outputLabel value="Passord"/> <h:inputSecret id="password" value="#{signinbean.password}"/>
               <h:commandButton value="Logg inn" action="#{signinbean.checkStudent()}"
                               />
           </h:panelGrid>
