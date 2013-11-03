@@ -58,11 +58,14 @@
 
                 </h:form>
                 <h:form>
-                    <h:commandButton value="Slett"
+                    <h:commandButton value="Slett" 
                                      action="#{modulebean.delete}" rendered="true" />
+                    
                     <h:commandButton value="Avbryt"
                                      immediate="true"
-                                     action="modules" />   
+                                     action="modules" />
+                    <br></br>
+                    <h:outputText style="color: red" value="#{modulebean.deleteError}" rendered="true" /><!--Denne skrives ikke ut, finn ut hvorfor og fiks det-->
                 </h:form>    
 
             </ui:define>

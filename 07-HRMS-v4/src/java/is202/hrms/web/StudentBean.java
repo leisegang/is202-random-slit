@@ -116,6 +116,7 @@ public class StudentBean implements Serializable {
 
         if (updating) {
             StudentEjb.delete(student);
+            progressionEjb.delete(prog);
         }
         return View.registration;
     }
