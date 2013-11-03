@@ -5,7 +5,9 @@
 package is202.hrms.web;
 
 import is202.hrms.ejb.ModuleEJB;
+import is202.hrms.ejb.ProgressionEJB;
 import is202.hrms.entity.Modul;
+import is202.hrms.entity.Progression;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -25,12 +27,14 @@ import javax.inject.Named;
 public class ModuleBean implements Serializable{
     private boolean updating; //hva brukes dette feltet til
     @EJB private ModuleEJB moduleEjb; //dette er jeg ikke sikker på
+    @EJB private ProgressionEJB progressionEjb;
 
 
     private Modul module;
     private boolean moduleExists;
     private String errorMessage;
     private long param;
+    private String deleteError;
 
     
     public ModuleBean() {
@@ -51,6 +55,7 @@ public class ModuleBean implements Serializable{
         if (moduleId > 0) {
             updating = true;
             module = moduleEjb.find(moduleId);
+            deleteError = null;
             
         }
         else {
@@ -108,14 +113,30 @@ public class ModuleBean implements Serializable{
     }
     
 
-    public View delete() {
-        if (updating) moduleEjb.delete(module);
-        return View.modules;
+    public String delete() {
+        if(updating) {
+        for(Progression p : progressionEjb.findAll()) {
+            if(module.getModuleId()==p.getModule().getModuleId()) {
+                deleteError = "Modulen kan ikke slettes så lenge studenter har tilgang til den";
+                return null;
+            }}
+        moduleEjb.delete(module);
+        return "modules";
+    }
+        return null;
     }
 
     public boolean isUpdating() {
         return updating;
     }    
+
+    public String getDeleteError() {
+        return deleteError;
+    }
+
+    public void setDeleteError(String deleteError) {
+        this.deleteError = deleteError;
+    }
 
     
 }
