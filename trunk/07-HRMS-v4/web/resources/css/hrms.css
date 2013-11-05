@@ -73,8 +73,9 @@ table.data th, table.data td {
   width:100%;
 }
 #header {
-  background-color:#fee;
+  background-color:#3F62EE;
   border-bottom:1px solid #000;
+  height: 80px;
 }
 #header p,
 #header h1,
@@ -133,6 +134,7 @@ table.data th, table.data td {
   float:left;
   width:100%;
   position:relative;
+ 
 }
 .main,
 .menu {
