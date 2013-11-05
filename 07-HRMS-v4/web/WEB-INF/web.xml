@@ -19,8 +19,24 @@ unchanged, for the rest of the course -->
     <param-value>Development</param-value>
   </context-param>
 
+  <!-- This filter definition, along with the filter-mapping and listener
+  is needed to make file upload work -->
+  <filter>
+    <filter-name>MyFacesExtensionsFilter</filter-name>
+    <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>MyFacesExtensionsFilter</filter-name>
+    <servlet-name>FacesServlet</servlet-name>
+  </filter-mapping>
+
+  <listener>
+    <listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
+  </listener>
+  <!-- end of changes made for file upload -->
+
   <resource-ref>
-    <description>Tells the server which database we will use. The datasource must be defined in context.xml.</description>
+    <description>Tells the server which database we will use. The datasource must be defined in context.xml (or in the server configuration (i.e. tomee.xml for tomee).</description>
     <res-ref-name>jdbc/slitdb</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
@@ -31,7 +47,7 @@ unchanged, for the rest of the course -->
   opportunity to change the servlet configuration. -->
   <servlet>
     <!-- The servlet name is used inside GlassFish to identify the servlet -->
-    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-name>FacesServlet</servlet-name>
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -40,7 +56,7 @@ unchanged, for the rest of the course -->
   matches this pattern will be sent to the servlet. In our case all URLs ending
   with the extension .xhtml will be sent to the Faces Servlet -->
   <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-name>FacesServlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
 

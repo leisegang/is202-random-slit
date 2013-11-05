@@ -22,5 +22,6 @@ public enum View {
     student,
     modules,
     module,
+    upload,
     registration;
 }
