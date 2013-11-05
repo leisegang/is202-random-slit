@@ -7,6 +7,7 @@ package is202.hrms.entity;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,9 @@ public class StoredFile implements Serializable{
      * it from the database before we explicitly as for it. This is
      * to avoid unnecessary load on the database and application server. */
      @Lob @Basic(fetch=FetchType.LAZY)
+     
+     @Column(columnDefinition = "longblob")
+     
     private byte[] contents;
 
     public StoredFile() {}
