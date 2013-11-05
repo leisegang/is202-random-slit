@@ -37,7 +37,7 @@ unchanged, for the rest of the course -->
 
   <resource-ref>
     <description>Tells the server which database we will use. The datasource must be defined in context.xml (or in the server configuration (i.e. tomee.xml for tomee).</description>
-    <res-ref-name>jdbc/slitdb</res-ref-name>
+    <res-ref-name>jdbc/slitdb3</res-ref-name>
     <res-type>javax.sql.DataSource</res-type>
     <res-auth>Container</res-auth>
   </resource-ref>
