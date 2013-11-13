@@ -27,7 +27,10 @@
 
                         <h:outputLabel value="Modul:"/> 
                         <h:inputText id="modulename" value="#{modulebean.module.moduleName}" validator="#{modulebean.checkModuleName}" required="true" />
-                        <h:message style="color: red" for="modulename" />                        
+                        <h:message style="color: red" for="modulename" />  
+                        
+                        <h:outputLabel value="Rekkefølgenummer:" />
+                        <h:inputText id="rekkefølge" value="#{modulebean.module.sortBy}" />
 
                         <h:outputLabel value="Tidsfrist:"/> 
                         <h:outputText value="yy.mm.dd" />
