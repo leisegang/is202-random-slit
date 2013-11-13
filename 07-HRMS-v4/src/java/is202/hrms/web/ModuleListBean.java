@@ -21,14 +21,13 @@ import javax.inject.Named;
 @RequestScoped
 public class ModuleListBean implements Serializable {
     private static final long serialVersionUID = 1L; //hva holder dette feltet på?
-
     @EJB ModuleEJB moduleEjb;
 
     public ModuleListBean() {
     }
 
     public List<Modul> getModules() {
-        List<Modul> l = moduleEjb.findAll();
+        List<Modul> l = moduleEjb.getModules();
         return l;
     }
 

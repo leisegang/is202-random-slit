@@ -32,6 +32,7 @@ public class Modul implements Serializable {
     private String criteria;
     private int numberOfStudents;
     private String difficulty;
+    private int sortBy;
     
     @Temporal(TemporalType.DATE)
     private Date timeLimit;
@@ -79,6 +80,14 @@ public class Modul implements Serializable {
     public void setModuleName(String modueName) {
         this.moduleName = modueName;
     }
+
+    public int getSortBy() {
+        return sortBy;
+    }
+
+    public void setSortBy(int sortBy) {
+        this.sortBy = sortBy;
+    }    
 
     public String getDescription() {
         return description;
