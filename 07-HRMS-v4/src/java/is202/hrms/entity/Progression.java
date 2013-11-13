@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -22,6 +23,8 @@ public class Progression implements Serializable {
     
     @Id @ManyToOne private Student student;
     @Id @ManyToOne private Modul modul;
+    @OneToOne
+    private Prove prove;
     
 
     public Student getStudent() {
@@ -30,6 +33,14 @@ public class Progression implements Serializable {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public Prove getProve() {
+        return prove;
+    }
+
+    public void setProve(Prove prove) {
+        this.prove = prove;
     }
 
     public Modul getModule() {

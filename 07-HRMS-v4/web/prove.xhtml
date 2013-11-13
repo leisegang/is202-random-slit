@@ -15,23 +15,27 @@
         The department to edit is selected with the depno url parameter,
         which is passed on to the setDepNo() method in depbean. -->
         <f:metadata>
-            <f:viewParam name="" value="" />
+            <f:viewParam name="proveId" value="#{provebean.param}" />
+            <f:viewParam name="modId" value="#{modulebean.param}" />
+                        
         </f:metadata>
     </h:head>
     <h:body>
         <ui:composition template="/templates/layout.xhtml">
             <ui:define name="content">
                 <h2>Modul prøve</h2>
+                <h:outputText value="#{signinbean.student.studentID}" />
                 <h:form>
+                    
                     <h:panelGrid columns="1">
 
                         <h:outputLabel value="Refleksjonsnotat:"/> 
-                        <h:inputTextarea id="criteria" cols="40" rows="5" value=""/>
+                        <h:inputTextarea id="criteria" cols="40" rows="5" value="#{provebean.reflectionNote}"/>
 
                     </h:panelGrid>
 
                     
-                    <h:selectOneRadio value="">
+                    <h:selectOneRadio value="#{provebean.understood}">
                     <h:outputLabel value="Har du forstått læringsmålene?"/> 
                         <f:selectItem itemLabel="Ja" itemValue="Ja" />
                         <f:selectItem itemLabel="Nei" itemValue="Nei" />
@@ -39,7 +43,7 @@
 
 
                     <h:commandButton value="Send"
-                                     action="Index" />
+                                     action="#{provebean.save(signinbean.student.studentID, modulebean.param)}" />
 
 
 
