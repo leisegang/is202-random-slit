@@ -18,8 +18,5 @@ public class WaitingForAccess implements Serializable {
         this.stud = stud;
     }
     
-    public getProve() {
-        
-    }
-    
+
 }

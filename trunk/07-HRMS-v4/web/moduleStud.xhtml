@@ -42,7 +42,7 @@
                         <h:outputText value="Vanskelighetsgrad:" />
                         <h:outputText value="#{modulebean.module.difficulty}" />
                         
-                        <h:commandButton value="Til prøven" action="prove"/>
+                        <h:link value="Til prøven" outcome="prove.xhtml?modId=#{modulebean.module.moduleId}"/>
 
                     </h:panelGrid>
 

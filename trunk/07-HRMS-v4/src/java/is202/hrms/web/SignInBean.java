@@ -24,6 +24,7 @@ public class SignInBean implements Serializable{
     @EJB private ForeleserEJB foreleserEjb;
     private String username;
     private String password;
+    private Student student;
     private boolean foreleser;
 
     public SignInBean() {
@@ -44,6 +45,14 @@ public class SignInBean implements Serializable{
         this.foreleser = foreleser;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -61,12 +70,14 @@ public class SignInBean implements Serializable{
         for (Student s: studentEjb.findAll()){
             if (username.equals(s.getUsername() ) && password.equals(s.getPassword())) {
                 foreleser = false;
+                student = s;
                 return "indexS";
             }
        }
         for (Foreleser f: foreleserEjb.findAll()){
             if (username.equals(f.getUsername() ) && password.equals(f.getPassword())) {
                 foreleser = true;
+                
                 return "hrms";
             }
        }        
