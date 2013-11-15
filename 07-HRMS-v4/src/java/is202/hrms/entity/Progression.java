@@ -25,6 +25,20 @@ public class Progression implements Serializable {
     @Id @ManyToOne private Modul modul;
     @OneToOne
     private Prove prove;
+    private int godkjent;
+
+    public Progression() {
+    }
+
+    public int getGodkjent() {
+        return godkjent;
+    }
+
+    public void setGodkjent(int godkjent) {
+        this.godkjent = godkjent;
+    }
+    
+    
     
 
     public Student getStudent() {
