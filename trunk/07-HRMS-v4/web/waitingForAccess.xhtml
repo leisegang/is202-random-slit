@@ -17,32 +17,41 @@
       <ui:define name="content">
         <!-- This page displays the list of departments with
         links for editing, and a button for creating new ones -->
-       <h2>Studenter som venter på godkjenning</h2> 
+        <h2>Studenter som venter på godkjenning </h2>
 
         <!-- The dataTable tag is used to display the list.
         It works a bit like a for-each loop in java. The
         var attribute binds the name dep to each department in turn
         -->
-        <h:dataTable value="#{modulelistbean.modules}" var="module"
+        <h:dataTable value="#{progressionlistBean.progression}" var="progression"
                      styleClass="data">
-       
-          <h:column>
-            <f:facet name="header">Student Navn</f:facet>
-            #{student.firstname}
-            #{student.lastname}
+            
+
+            <h:column>
+               
+            <f:facet name="header">Navn</f:facet>
+            #{progression.student.firstname} 
+            <h:link outcome="progression?proveID=#{progression.prove.proveId}">#{progression.prove.proveId}</h:link>
+
+
           </h:column>
-          <h:column>
-              <f:facet name="header">Ønsker å få godkjent ModulNr:</f:facet>
-              #{modul.moduleId}
+            <h:column>
+            <f:facet name="header">Skal få godkjent modul: </f:facet>
+            #{progression.module.moduleName}
+
           </h:column>
-          <h:column>
-              <f:facet name="header">Status:</f:facet>
-              #{module.timeLimit}
-          </h:column>            
+            
+            <h:column>
+            <f:facet name="header">Skal få godkjent modul: </f:facet>
+
+
+          </h:column>
+            
+            
         </h:dataTable>
 
+        
       </ui:define>
     </ui:composition>
-
   </h:body>
 </html>
