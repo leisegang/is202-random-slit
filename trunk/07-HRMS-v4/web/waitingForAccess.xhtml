@@ -30,9 +30,12 @@
             <h:column>
                
             <f:facet name="header">Navn</f:facet>
-            #{progression.student.firstname} 
-            <h:link outcome="progression?proveID=#{progression.prove.proveId}">#{progression.prove.proveId}</h:link>
 
+          
+            <h:link outcome="setprog" value="#{progression.student.firstname}" >
+                <f:param value="#{progression.student.studentID}" name="studID" />
+                <f:param value="#{progression.module.moduleId}" name="modID" /> 
+            </h:link>
 
           </h:column>
             <h:column>

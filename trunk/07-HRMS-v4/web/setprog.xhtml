@@ -15,7 +15,8 @@
         The department to edit is selected with the depno url parameter,
         which is passed on to the setDepNo() method in depbean. -->
         <f:metadata>
-            <f:viewParam name="moduleName" value="#{modulebean.param}" />
+            <f:viewParam name="studID" value="#{studentbean.param}" />
+            <f:viewParam name="modID" value="#{modulebean.param}" />           
         </f:metadata>
     </h:head>
     <h:body>
@@ -23,16 +24,26 @@
             <ui:define name="content">
                 <h2>Module</h2>
                 <h:form>
+                 
+                    <h:selectOneRadio value="#{progressionbean.godkjent}" >   
+
+                        <f:selectItem itemLabel="Godkjent" itemValue="1" />
+                        <f:selectItem itemLabel="IKKE" itemValue="2" />                      
+                    
+                    
+                    </h:selectOneRadio>       
+                     
+                        
+                       
+                    <h:commandButton value="Godkjenn" action="#{progressionbean.save(studentbean.student.studentID, modulebean.module.moduleId)}" />
+                    
+                    
+                    
+                    
                     <h:panelGrid columns="1">
 
-                        <h:outputLabel value="Modul:"/> 
-                        <h:inputText id="modulename" value="#{modulebean.module.moduleName}" validator="#{modulebean.checkModuleName}" required="true" />
-                        <h:message style="color: red" for="modulename" />  
-                        
-                        <h:outputLabel value="Rekkefølgenummer:" />
-                        <h:inputText id="rekkefølge" value="#{modulebean.module.sortBy}" />
 
-
+                    </h:panelGrid>
                 </h:form>
 
             </ui:define>
