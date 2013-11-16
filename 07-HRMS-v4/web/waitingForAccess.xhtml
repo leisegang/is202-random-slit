@@ -26,34 +26,27 @@
         <h:dataTable value="#{progressionlistBean.progression}" var="progression"
                      styleClass="data">
             
-
             <h:column>
                
             <f:facet name="header">Navn</f:facet>
 
           
             <h:link outcome="setprog" value="#{progression.student.firstname}" >
-                <f:param value="#{progression.student.studentID}" name="studID" />
+                <f:param  value="#{progression.student.studentID}" name="studID" />
                 <f:param value="#{progression.module.moduleId}" name="modID" /> 
             </h:link>
 
           </h:column>
             <h:column>
             <f:facet name="header">Skal få godkjent modul: </f:facet>
-            #{progression.module.moduleName}
+            <h:outputText value="#{progression.module.moduleName}" />
 
           </h:column>
-            
-            <h:column>
-            <f:facet name="header">Skal få godkjent modul: </f:facet>
-
-
-          </h:column>
-            
             
         </h:dataTable>
-
         
+
+
       </ui:define>
     </ui:composition>
   </h:body>

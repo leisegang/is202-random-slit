@@ -11,6 +11,7 @@ import is202.hrms.ejb.ProgressionEJB;
 import is202.hrms.ejb.StudentEJB;
 import is202.hrms.entity.Progression;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -34,16 +35,16 @@ public class ProgressionListBean implements Serializable {
        
     }
 
-    public List<Progression> getProgression() {
-        List<Progression> l = progressionEjb.findAll();
-        for(Progression p : l){
-           p.setModule(modEjb.find(p.getModule().getModuleId())); 
-           p.setStudent(studEjb.find(p.getStudent().getStudentID())); 
-        }
-        
-       
-        
-        return l;
-    }
+    
+ public List<Progression> getProgression() { 
+     List<Progression> l = progressionEjb.findAll(); 
+     List<Progression> temp = new ArrayList<Progression>(); 
+     for(Progression p : l){
+         if(p.getProve() != null){
+             p.setModule(modEjb.find(p.getModule().getModuleId())); 
+             p.setStudent(studEjb.find(p.getStudent().getStudentID())); 
+             temp.add(p); } 
+     } 
+     return temp; }    
 
 }
