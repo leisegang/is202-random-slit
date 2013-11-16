@@ -31,6 +31,7 @@ private int proveId;
 
     public ProveBean() {
     }
+    
 
     public ProveEJB getProveEjb() {
         return proveEjb;
@@ -92,8 +93,7 @@ private int proveId;
           
         prove.setReflectionNote(reflectionNote);
         prove.setUnderstood(understood);
-        
-        
+
         return prove;
     }
     
@@ -107,6 +107,7 @@ private int proveId;
             
         }
         getProgression(student, modul, p);
+        
         return "indexS";
     }    
     
