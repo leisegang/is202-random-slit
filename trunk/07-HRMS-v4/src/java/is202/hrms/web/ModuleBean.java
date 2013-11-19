@@ -25,8 +25,8 @@ import javax.inject.Named;
 @Named ("modulebean")
 @SessionScoped //skal endres til SessionScoped!!
 public class ModuleBean implements Serializable{
-    private boolean updating; //hva brukes dette feltet til
-    @EJB private ModuleEJB moduleEjb; //dette er jeg ikke sikker på
+    private boolean updating; //Dette er en boolean verdi som setter modulen til å oppdatere
+    @EJB private ModuleEJB moduleEjb; //Kobler til ModuleEJB fila (Enterprisebean) snakker med databasen
     @EJB private ProgressionEJB progressionEjb;
 
 
