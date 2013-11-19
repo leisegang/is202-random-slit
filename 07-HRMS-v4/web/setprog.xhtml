@@ -22,7 +22,7 @@
     <h:body>
         <ui:composition template="/templates/layout.xhtml">
             <ui:define name="content">
-                <h2>Module</h2>
+                <h2>Modul</h2>
                 <h:form>
                  
                     <h:selectOneRadio value="#{progressionbean.godkjent}" >   
@@ -35,7 +35,7 @@
                      
                         
                        
-                    <h:commandButton value="Godkjenn" action="#{progressionbean.save(studentbean.student.studentID, modulebean.module.moduleId)}" />
+                    <h:commandButton value="Lagre" action="#{progressionbean.save(studentbean.student.studentID, modulebean.module.moduleId)}" />
                     
                     
                     

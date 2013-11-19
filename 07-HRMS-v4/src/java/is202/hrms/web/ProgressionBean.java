@@ -23,7 +23,7 @@ import javax.inject.Named;
 @Named("progressionbean")
 @RequestScoped
 public class ProgressionBean implements Serializable {
-    
+
     @EJB
     private ProgressionEJB progressionEjb;
     @EJB
@@ -33,66 +33,57 @@ public class ProgressionBean implements Serializable {
     private int godkjent;
     private long studentID;
     private Progression prog;
-    
+
     public ProgressionBean() {
     }
-    
+
     public int getGodkjent() {
         return godkjent;
     }
-    
+
     public void setGodkjent(int godkjent) {
         this.godkjent = godkjent;
     }
-    
+
     public long getStudentID() {
         return studentID;
     }
-    
+
     public void setStudentID(long studentID) {
         this.studentID = studentID;
     }
-    
+
     public Progression getProg() {
         return prog;
     }
-    
+
     public void setProg(Progression prog) {
         this.prog = prog;
     }
-    
+
     public void save(int student, int modul) {
         ProgId d = new ProgId(student, modul);
         Progression pa = progressionEjb.find(d);
-        
+
         if (pa != null) {
             pa.setGodkjent(godkjent);
             progressionEjb.update(pa);
         }
-        
-        
-        
+        nextModule(student, modul);
     }
-    public void dosi(int student, int modul){
-    if (godkjent == 1) {
-            Progression p = new Progression();
-            Student s = studEjb.find(student);
-            p.setStudent(s);
-            Modul m = modEjb.find(modul);            
-            p.setModule(m);
-            p.setGodkjent(godkjent);
+
+    public void nextModule(int student, int modul) {
+        int currentOrder = modEjb.find(modul).getSortBy();
+        Modul nextModul = null;
+        for (Modul m : modEjb.findAll()) {
+            if (m.getSortBy() == currentOrder + 1) {
+                nextModul = m;
+            }
         }
-    }
-    
-    public void notApproved() {
-        godkjent = 3;
-        
-    }
-    
-    public void checkApproved() {
-        if (godkjent == 2) {
-            
-            
-        }
+        Progression p = new Progression();
+        Student s = studEjb.find(student);
+        p.setStudent(s);
+        p.setModule(nextModul);
+        progressionEjb.insert(p);
     }
 }
