@@ -6,10 +6,7 @@ package is202.hrms.web;
 
 import is202.hrms.ejb.ModuleEJB;
 import is202.hrms.entity.Modul;
-import is202.hrms.entity.Progression;
-import is202.hrms.entity.Student;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;

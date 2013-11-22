@@ -70,7 +70,7 @@ public class StudentBean implements Serializable {
     public void setParam(long studentID) {
         ProgId progId = null;
         long modId = 0;
-        for (Modul m : moduleEjb.findAll()) {
+        for (Modul m : moduleEjb.findAll2()) {
             if ("Introduksjon".equals(m.getModuleName())) {
                 modId = m.getModuleId();
                 progId = new ProgId(studentID, modId);
@@ -107,7 +107,7 @@ public class StudentBean implements Serializable {
             StudentEjb.update(student);
         } else {
             StudentEjb.insert(student);
-            prog.setLastProgress(true);
+            //prog.setLastProgress(true);
             progressionEjb.insert(prog);
         }
         return "registration";
