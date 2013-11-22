@@ -26,6 +26,15 @@ public class Progression implements Serializable {
     @OneToOne
     private Prove prove;
     private int godkjent;
+    private boolean lastProgress;
+
+    public boolean isLastProgress() {
+        return lastProgress;
+    }
+
+    public void setLastProgress(boolean lastProgress) {
+        this.lastProgress = lastProgress;
+    }
 
     public Progression() {
     }

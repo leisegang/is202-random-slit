@@ -5,6 +5,7 @@
 package is202.hrms.ejb;
 
 import is202.hrms.entity.Modul;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,10 +27,12 @@ public class ModuleEJB extends AbstractFacade<Modul> {
         return em;
     }
 
+    //BRUKER IKKE 
     public List<Modul> getModules() {
 
         TypedQuery<Modul> m = em.createQuery("SELECT m FROM Modul m ORDER BY m.sortBy ASC",
                 Modul.class);
+
         return m.getResultList();
 
     }
@@ -44,5 +47,18 @@ public class ModuleEJB extends AbstractFacade<Modul> {
             dep.getProgression();
         }
         return dep;
+    }
+
+    public List<Modul> findAll() {
+    ArrayList<Modul> temp = new ArrayList<Modul>();
+        List<Modul> l = super.findAll();
+        if (null != l) {
+            for (Modul m : l) {
+                m.getProgression();
+                temp.add(m.getSortBy()-1, m);
+            }
+
+        }
+        return temp;
     }
 }

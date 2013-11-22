@@ -19,27 +19,23 @@ import javax.persistence.TemporalType;
  *
  * @author Vetle
  */
-
 @Entity
 public class Modul implements Serializable {
-    
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue
     private long moduleId;
-    
     private String moduleName;
-    
     private String description;
     private String criteria;
-    private int numberOfStudents;
+    private int numberOfStudents; //kan fjernes?s
     private String difficulty;
     private int sortBy;
-    
     @Temporal(TemporalType.DATE)
     private Date timeLimit;
-    
     @OneToMany(mappedBy = "modul")
     private List<Progression> progression;
-    
+
     /**
      * constructor
      */
@@ -56,9 +52,19 @@ public class Modul implements Serializable {
     public void addProgression(Progression p) {
         progression.add(p);
     }
-    
+
     public long getModuleId() {
         return moduleId;
+    }
+
+    public int currentStudents() {
+        int size = 0;
+        for (Progression p : progression) {
+            if (p.isLastProgress()) {
+                size++;
+            }
+        }
+        return size;
     }
 
     public List<Progression> getProgression() {
@@ -68,7 +74,7 @@ public class Modul implements Serializable {
     public void setModuleId(long moduleId) {
         this.moduleId = moduleId;
     }
-    
+
     public Modul() {
         progression = new ArrayList<Progression>();
     }
@@ -87,7 +93,7 @@ public class Modul implements Serializable {
 
     public void setSortBy(int sortBy) {
         this.sortBy = sortBy;
-    }    
+    }
 
     public String getDescription() {
         return description;
@@ -150,7 +156,4 @@ public class Modul implements Serializable {
         }
         return true;
     }
-
-
-    
 }
