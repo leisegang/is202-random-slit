@@ -10,6 +10,7 @@ import is202.hrms.ejb.StudentEJB;
 import is202.hrms.entity.Modul;
 import is202.hrms.entity.ProgId;
 import is202.hrms.entity.Progression;
+import is202.hrms.entity.Prove;
 import is202.hrms.entity.Student;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -33,6 +34,7 @@ public class ProgressionBean implements Serializable {
     private int godkjent;
     private long studentID;
     private Progression prog;
+    private Prove prove;
 
     public ProgressionBean() {
     }
@@ -67,6 +69,7 @@ public class ProgressionBean implements Serializable {
 
         if (pa != null) {
             pa.setGodkjent(godkjent);
+            pa.setLastProgress(false);
             progressionEjb.update(pa);
         }
         nextModule(student, modul);
@@ -84,6 +87,7 @@ public class ProgressionBean implements Serializable {
         Student s = studEjb.find(student);
         p.setStudent(s);
         p.setModule(nextModul);
+        p.setLastProgress(true);
         progressionEjb.insert(p);
     }
 }

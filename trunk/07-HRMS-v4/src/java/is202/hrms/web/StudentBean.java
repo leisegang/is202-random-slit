@@ -107,6 +107,7 @@ public class StudentBean implements Serializable {
             StudentEjb.update(student);
         } else {
             StudentEjb.insert(student);
+            prog.setLastProgress(true);
             progressionEjb.insert(prog);
         }
         return "registration";
