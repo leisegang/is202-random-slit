@@ -71,7 +71,7 @@ public class StudentBean implements Serializable {
         ProgId progId = null;
         long modId = 0;
         for (Modul m : moduleEjb.findAll2()) {
-            if ("Introduksjon".equals(m.getModuleName())) {
+            if (m.getModuleName().equals("Introduksjon")) {
                 modId = m.getModuleId();
                 progId = new ProgId(studentID, modId);
                 moduleExistence = true;
@@ -99,6 +99,7 @@ public class StudentBean implements Serializable {
             prog = new Progression();
             prog.setStudent(student);
             prog.setModule(m);
+            prog.setLastProgress(true);
         }
     }
 
