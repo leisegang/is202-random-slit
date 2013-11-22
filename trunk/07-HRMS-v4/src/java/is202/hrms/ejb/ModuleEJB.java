@@ -55,10 +55,17 @@ public class ModuleEJB extends AbstractFacade<Modul> {
         if (null != l) {
             for (Modul m : l) {
                 m.getProgression();
-                temp.add(m.getSortBy()-1, m);
+                temp.add(m.getSortBy(), m);
             }
 
         }
         return temp;
+    }
+    
+    public List<Modul> findAll2() {
+    
+        List<Modul> l = super.findAll();
+        
+        return l;
     }
 }
