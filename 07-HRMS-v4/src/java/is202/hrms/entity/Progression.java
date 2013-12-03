@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package is202.hrms.entity;
 
 import java.io.Serializable;
@@ -12,8 +9,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
- *
- * @author Vetle
+ * Oppretter Progression objekter. Her blir det lagret info om Studenten, prøveIden, og modul. 
+ * For å sjekke om dette er den siste progresjonen studenten har, satt vi en boolean som er true, hvis det er siste.
+ * 
+ * @author Vetle, Vlorjan, Kjetil
  */
 @Entity
 @IdClass(ProgId.class)
