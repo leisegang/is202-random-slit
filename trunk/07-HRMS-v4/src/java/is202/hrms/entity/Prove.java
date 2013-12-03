@@ -18,7 +18,10 @@ public class Prove implements Serializable {
     @GeneratedValue @Id private int proveId;
     private String reflectionNote;
     private boolean understood;
-
+/* Denne klassen heter Prove, og som du ser så er denne en Entitet. 
+ *  Id og GeneratedValue gjør slik at proveId er en ID og at det genereres i rekkefølge.
+ *  Vi har en boolean verdi som er satt til å være "forstått"
+ */
     public Prove() {
     }
 
