@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package is202.hrms.entity;
 
 import java.io.Serializable;
@@ -16,8 +12,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
- * @author Vetle
+ * Class Modul
+ * 
+ * Denne klassen er en del av en modulbasert læringsapplikasjon som skal brukes av studenter som tar kurset IS-102, Objektorientert programmering
+ * Applikasjonen skal håndtere moduler, brukere og deres progresjon.
+ * 
+ * Denne klassen representerer modulobjektene som vil bli lagret i databasen.
+ * 
+ * @author Vetle, Kjetil, Vlorjan
+ * @version 02.12.2013
  */
 @Entity
 public class Modul implements Serializable {
@@ -37,7 +40,13 @@ public class Modul implements Serializable {
     private List<Progression> progression;
 
     /**
-     * constructor
+     * Oppretter et modulobjekt med gitte parameterverdier 
+     * @param moduleName
+     * @param description
+     * @param criteria
+     * @param numberOfStudents
+     * @param difficulty
+     * @param timeLimit 
      */
     public Modul(String moduleName, String description, String criteria, int numberOfStudents, String difficulty, Date timeLimit) {
         this.moduleName = moduleName;
