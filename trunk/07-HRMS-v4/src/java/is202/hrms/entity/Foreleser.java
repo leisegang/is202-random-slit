@@ -1,9 +1,3 @@
-/**
- * Klassen Student er en subklasse av klassen Bruker. den blir brukt til å opprette Studentobjekter
- * 
- * @author Kjetil Homme 
- * @version 14.10.2013
- */
 
 package is202.hrms.entity;
 
@@ -13,38 +7,53 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+
 /**
+ * Klassen foreleser oppretter foreleser objekter
  *
- * @author kjetil
+ * @author Kjetil, Vetle, Vlorjan
+ * @version 14.10.2013
  */
 @Entity
 public class Foreleser implements Serializable {
 
     private static final long serialVersionUID = 1L;
-   
-    @Id @GeneratedValue  
+    @Id
+    @GeneratedValue
     private int foreleserID;
-    
-    @NotNull @Size(min=1)
+    @NotNull
+    @Size(min = 1)
     private String firstname;
-    
-    @NotNull @Size(min=1)
+    @NotNull
+    @Size(min = 1)
     private String lastname;
-    
-    @NotNull @Size(min=1)
+    @NotNull
+    @Size(min = 1)
     private String email;
-    
-    @NotNull @Size(min=1)  
+    @NotNull
+    @Size(min = 1)
     private String username;
-    
-    @NotNull @Size(min=1)   
+    @NotNull
+    @Size(min = 1)
     private String password;
-              
-    
-    public Foreleser () {
-    
-}
 
+    public Foreleser() {
+    }
+
+    /**
+     * 
+     * @param foreleserID
+     * @param firstname
+     * @param lastname
+     * @param email
+     * @param username
+     * @param password 
+     */
+    
+    /**
+     * Dette er kuntsruktøren, den setter inn verdiene som blir skrevet, i feltene.
+     */
     public Foreleser(int foreleserID, String firstname, String lastname, String email, String username, String password) {
         this.foreleserID = foreleserID;
         this.firstname = firstname;
@@ -54,6 +63,9 @@ public class Foreleser implements Serializable {
         this.password = password;
     }
 
+    /**
+     * Dette er getters og setters for alle feltene. det setter inn verdi, eller returnerer det som er lagret der.
+     */
     public int getForeleserID() {
         return foreleserID;
     }
@@ -102,6 +114,8 @@ public class Foreleser implements Serializable {
         this.password = password;
     }
 
+    
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -123,7 +137,4 @@ public class Foreleser implements Serializable {
         }
         return true;
     }
-
-    
-    
 }

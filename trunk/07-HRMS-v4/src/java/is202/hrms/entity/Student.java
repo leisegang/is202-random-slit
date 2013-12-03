@@ -1,9 +1,4 @@
-/**
- * Klassen Student er en subklasse av klassen Bruker. den blir brukt til å opprette Studentobjekter
- * 
- * @author Kjetil Homme 
- * @version 14.10.2013
- */
+
 
 package is202.hrms.entity;
 
@@ -17,8 +12,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 /**
- *
- * @author kjetil
+ * 
+ * @author kjetil, Vetle, Vlorjan
  */
 @Entity
 public class Student implements Serializable {
