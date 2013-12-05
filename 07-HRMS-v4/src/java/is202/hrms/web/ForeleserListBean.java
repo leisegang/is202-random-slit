@@ -17,12 +17,12 @@ import javax.inject.Named;
 
 /**
  *
- * @author even
+ * @author Vetle, Kjetil, Vlorjan
  */
 @Named("foreleserlistbean")
 @RequestScoped
 public class ForeleserListBean implements Serializable {
-    private static final long serialVersionUID = 1L;
+
 
     @EJB ForeleserEJB foreleserEjb;
 

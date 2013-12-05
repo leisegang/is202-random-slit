@@ -23,7 +23,7 @@ import javax.inject.Named;
 @RequestScoped //lol
 public class ProgressionListBean implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+
     @EJB
     ProgressionEJB progressionEjb;
     @EJB
