@@ -22,7 +22,7 @@ import javax.inject.Named;
 @Named("studentlistbean")
 @RequestScoped
 public class StudentListBean implements Serializable {
-    private static final long serialVersionUID = 1L;
+
 
     @EJB StudentEJB studentEjb;
 

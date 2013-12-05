@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
 @Entity
 public class Foreleser implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private int foreleserID;

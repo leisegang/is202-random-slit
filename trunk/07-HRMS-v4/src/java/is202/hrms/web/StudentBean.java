@@ -15,21 +15,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.Conversation;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
  *
- * @author Vlorjan og Kjetil
+ * @author Vlorjan og Kjetil, Vetle
  */
 @Named("studentbean")
 @SessionScoped
 public class StudentBean implements Serializable {
 
-    @Inject
-    Conversation conv;
     private boolean updating;
     @EJB
     private StudentEJB StudentEjb;

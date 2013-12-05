@@ -20,7 +20,6 @@ import javax.inject.Named;
 @RequestScoped
 public class ModuleListBean implements Serializable {
     
-    private static final long serialVersionUID = 1L; //hva holder dette feltet på?
     @EJB
     ModuleEJB moduleEjb;
     
