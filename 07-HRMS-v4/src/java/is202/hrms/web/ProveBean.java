@@ -81,7 +81,7 @@ private int proveId;
 
     }
     
-    public void getProgression(long student, long modul, Prove prove) {
+    public void setProgression(long student, long modul, Prove prove) {
         ProgId p = new ProgId(student, modul);
         Progression pro = progressionEjb.find(p);
         pro.setProve(prove);
@@ -107,7 +107,7 @@ private int proveId;
                 proveEjb.insert(p);
             
         }
-        getProgression(student, modul, p);
+        setProgression(student, modul, p);
         
         return "indexS";
     }    
