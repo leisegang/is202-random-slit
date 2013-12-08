@@ -41,7 +41,7 @@ public class ModuleBean implements Serializable{
         //konstruktør
 
     }
-    
+
     public long getParam() {
         if(module == null) {
             return 0;
@@ -56,7 +56,7 @@ public class ModuleBean implements Serializable{
             updating = true;
             module = moduleEjb.find(moduleId);
             deleteError = null;
-            
+
         }
         else {
             updating = false;
